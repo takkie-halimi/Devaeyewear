@@ -1,5 +1,37 @@
-<!--  Copyright (C) 2021 Halimi Takkie Eddine  <takkie8halimi@gmail.com> -->
+<?php
 
+/* headers */
+require_once('php/connexion.php');
+session_start();
+
+/* variables */
+$username = $_POST['username'];
+$password = $_POST['password'];
+$error = "";
+
+
+if($_SERVER["REQUEST_METHOD"] == "POST") {
+    $connexion = OpenConnexion();
+    $username = stripcslashes($username);
+    $password = stripcslashes($password);
+    $username = mysqli_real_escape_string($connexion, $username);
+    $password = mysqli_real_escape_string($connexion, $password);
+
+    $query = "SELECT * FROM user WHERE username='$username' and upassword='$password'";
+    $result = mysqli_query($connexion, $query);
+    $row = mysqli_fetch_row($result);
+    $count = mysqli_num_rows($result);
+
+    if($count == 1){
+        $_SESSION['username'] = $row[0];
+        header("location: gestion-produits.php");
+        exit();
+    }else {
+        $error = "Nom ou le mot de passe n'est pas valide";
+    }
+    CloseConnexion($connexion);
+}
+?>
 <!DOCTYPE HTML>
    <head>
       <!-- basic -->
@@ -11,7 +43,7 @@
       <meta name="viewport" content="initial-scale=1, maximum-scale=1">
 
       <!-- site metas -->
-      <title>Contact</title>
+      <title>Deva - Contact</title>
       <link rel="icon" href="images/logo/logo.ico"/>
       <!-- bootstrap css -->
       <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
@@ -35,17 +67,17 @@
                <a class="navbar-brand" href="#"><img src="images/logo/header-logo.png"></a>
                <button aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler" data-target="#navbarSupportedContent" data-toggle="collapse" type="button"><span class="navbar-toggler-icon"></span></button>
                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                  <ul class="navbar-nav ml-auto">
-                     <li class="nav-item active">
-                        <a class="nav-link" href="index.php"><i class="fa fa-home" aria-hidden="true"></i>Home</a>
-                     </li>
-                     <li class="nav-item">
-                        <a class="nav-link" href="shop.php"><i class="fa fa-shopping-cart" aria-hidden="true"></i>shop</a>
-                     </li>
-                     <li class="nav-item">
-                        <a class="nav-link" href="contact.php"><i class="fa fa-phone"></i>Contact</a>
-                     </li>
-                  </ul>
+                   <ul class="navbar-nav ml-auto">
+                       <li class="nav-item active">
+                           <a class="nav-link" href="index.php"><i class="fa fa-home" aria-hidden="true"></i>Accueil</a>
+                       </li>
+                       <li class="nav-item">
+                           <a class="nav-link" href="shop.php"><i class="fa fa-shopping-cart" aria-hidden="true"></i>Boutique</a>
+                       </li>
+                       <li class="nav-item">
+                           <a class="nav-link" href="contact.php"><i class="fa fa-phone"></i>Contact</a>
+                       </li>
+                   </ul>
                   <div class="top-social">
                      <button type="button" class="btn btn-social-icon btn-facebook btn-rounded">
                         <i class="fa fa-facebook"></i>
@@ -61,7 +93,7 @@
                <div class="collapse navbar-collapse" id="navbarSupportedContent1">
                   <ul class="navbar-nav ml-auto">
                       <li class="nav-item">
-                          <button onclick="document.getElementById('id01').style.display='block'" style="width:auto; border: none; background: none;"><a class="nav-link"><i class="fa fa-user"></i>LogIn</a></button>
+                          <button onclick="document.getElementById('id01').style.display='block'" style="width:auto; border: none; background: none;"><a class="nav-link"><i class="fa fa-user"></i>Connexion</a></button>
                           <div id="id01" class="modal">
                               <div class="modal-content animate" action="" method="post">
                                   <div class="imgcontainer">
@@ -145,7 +177,7 @@
                  <div class="row">
                      <div class="col-lg-5">
                          <div class="contact-title">
-                             <h4>Contacts Us</h4>
+                             <h4>Contactez-nous</h4>
                              <p>Contrary to popular belief, Lorem Ipsum is simply random text. It has roots in a piece of
                                  classical Latin literature from 45 BC, maki years old.</p>
                          </div>
@@ -155,7 +187,7 @@
                                      <i class="ti-location-pin"></i>
                                  </div>
                                  <div class="ci-text">
-                                     <span>Address:</span>
+                                     <span>Adresse:</span>
                                      <p>60-49 Road 11378 New York</p>
                                  </div>
                              </div>
@@ -164,7 +196,7 @@
                                      <i class="ti-mobile"></i>
                                  </div>
                                  <div class="ci-text">
-                                     <span>Phone:</span>
+                                     <span>Téléphoner:</span>
                                      <p>+65 11.188.888</p>
                                  </div>
                              </div>
@@ -182,19 +214,19 @@
                      <div class="col-lg-6 offset-lg-1">
                          <div class="contact-form">
                              <div class="leave-comment">
-                                 <h4>Leave A Comment</h4>
-                                 <p>Our staff will call back later and answer your questions.</p>
+                                 <h4>Laissez un commentaire</h4>
+                                 <p>Notre personnel vous rappellera plus tard et répondra à vos questions. </p>
                                  <form action="#" class="comment-form">
                                      <div class="row">
                                          <div class="col-lg-6">
-                                             <input type="text" placeholder="Your name">
+                                             <input type="text" placeholder="Votre nom">
                                          </div>
                                          <div class="col-lg-6">
-                                             <input type="text" placeholder="Your email">
+                                             <input type="text" placeholder="Votre email">
                                          </div>
                                          <div class="col-lg-12">
-                                             <textarea placeholder="Your message"></textarea>
-                                             <button type="submit" class="site-btn">Send message</button>
+                                             <textarea placeholder="Votre message"></textarea>
+                                             <button type="submit" class="site-btn">Envoyer le message</button>
                                          </div>
                                      </div>
                                  </form>
@@ -234,16 +266,16 @@
                     <div class="col-lg-4">
                         <img src="images/instagram.jpg">
                     </div>
-                   <div class="col-lg-5">
-                      <div class="newslatter-item">
-                         <h5>Join Our Newsletter Now</h5>
-                         <p>Get E-mail updates about our latest shop and special offers.</p>
-                         <form action="#" class="subscribe-form">
-                            <input type="text" placeholder="Enter Your Mail">
-                            <button type="button">Subscribe</button>
-                         </form>
-                      </div>
-                   </div>
+                    <div class="col-lg-5">
+                        <div class="newslatter-item">
+                            <h5>Rejoignez notre newsletter maintenant</h5>
+                            <p>Recevez des mises à jour par e-mail sur notre dernière boutique et nos offres spéciales.</p>
+                            <form action="#" class="subscribe-form">
+                                <input type="text" placeholder="Entrez votre e-mail ">
+                                <button type="button">S'abonner</button>
+                            </form>
+                        </div>
+                    </div>
                 </div>
              </div>
                 <!-- copyright section end -->

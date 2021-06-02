@@ -4,7 +4,29 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a2bb3d95-641c-495f-b49e-015efe557672" name="Default Changelist" comment="" />
+    <list default="true" id="a2bb3d95-641c-495f-b49e-015efe557672" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/contact.php" beforeDir="false" afterPath="$PROJECT_DIR$/contact.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/style.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/index.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/products/product-11/index-11.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/products/product-11/index-11.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/products/product-11/product-1.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/products/product-11/product-1.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/products/product-11/product-2.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/products/product-11/product-2.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/products/product-11/product-3.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/products/product-11/product-3.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/products/product-11/product-4.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/products/product-11/product-4.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/products/product-12/index-12.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/products/product-12/index-12.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/products/product-12/product-1.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/products/product-12/product-1.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/products/product-12/product-2.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/products/product-12/product-2.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/products/product-12/product-3.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/products/product-12/product-3.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/products/product-12/product-4.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/products/product-12/product-4.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/products/product-13/index-13.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/products/product-13/product-1.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/products/product-13/product-2.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/products/product-13/product-3.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/products/product-13/product-4.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/shop.php" beforeDir="false" afterPath="$PROJECT_DIR$/shop.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/single-product.php" beforeDir="false" afterPath="$PROJECT_DIR$/single-product.php" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -25,6 +47,9 @@
     </file-type-list>
   </component>
   <component name="HighlightingSettingsPerFile">
+    <setting file="file://$APPLICATION_CONFIG_DIR$/consoles/db/86b1ea16-da77-4106-b7db-c9c1405b92c0/console.sql" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/css/style.css" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/gestion-produits.php" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/single-product.php" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/consoles/db/9e610d51-a927-441d-b76e-ec1d3ee693b8/console.sql" root0="FORCE_HIGHLIGHTING" />
   </component>
@@ -35,10 +60,13 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="ASKED_SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="DatabaseDriversLRU" value="mysql" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="database.data.extractors.current.export.id" value="SQL Inserts" />
+    <property name="database.data.extractors.current.id" value="SQL Inserts" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
     <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
@@ -62,7 +90,25 @@
       <workItem from="1621440910049" duration="7018000" />
       <workItem from="1621462210461" duration="2410000" />
       <workItem from="1621467603638" duration="1757000" />
-      <workItem from="1621500674106" duration="3259000" />
+      <workItem from="1621500674106" duration="16326000" />
+      <workItem from="1621554701870" duration="6764000" />
+      <workItem from="1621593738497" duration="138000" />
+      <workItem from="1621593991720" duration="16818000" />
+      <workItem from="1621680616779" duration="2459000" />
+      <workItem from="1621685719758" duration="19422000" />
+      <workItem from="1621728455937" duration="5863000" />
+      <workItem from="1621792081941" duration="5304000" />
+      <workItem from="1621963584670" duration="5857000" />
+      <workItem from="1622038338862" duration="17017000" />
+      <workItem from="1622161511614" duration="681000" />
+      <workItem from="1622221985273" duration="4776000" />
+      <workItem from="1622245568546" duration="3371000" />
+      <workItem from="1622299947933" duration="9173000" />
+      <workItem from="1622324027885" duration="8389000" />
+      <workItem from="1622389359810" duration="1166000" />
+      <workItem from="1622420194564" duration="8502000" />
+      <workItem from="1622493346582" duration="17107000" />
+      <workItem from="1622594667028" duration="1059000" />
     </task>
     <servers />
   </component>

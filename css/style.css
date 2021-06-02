@@ -1091,7 +1091,7 @@ input.mail_bt::placeholder {
 .copyright-reserved {
     border-top: 1px solid #303030;
     padding: 15px 0;
-    margin-top: 45px;
+    margin-top: 10px;
 }
 
 .copyright-reserved .copyright-text {
@@ -2070,7 +2070,7 @@ container
 .product_review .single_review_content .classs__review__inner .input__box input {
     border: 1px solid #cecbcb;
     border-radius: 5px;
-    height: 50px;
+    height: 40px;
     outline: medium none;
     width: 100%; }
 .product_review .single_review_content .classs__review__inner .input__box textarea {
@@ -2406,11 +2406,11 @@ ol {
     padding-right: 65px;
     padding-left: 30px;
     padding-top: 45px;
-    padding-bottom: 10px;
+    padding-bottom: 50px;
 }
 
 .product-large {
-    height: 500px;
+    height: 550px;
     margin-left: -15px;
     margin-right: -15px;
     text-align: center;
@@ -2583,7 +2583,7 @@ ol {
 .man-banner {
     padding-right: 65px;
     padding-left: 65px;
-    padding-top: 10px;
+    padding-top: 50px;
     padding-bottom: 50px;
 }
 
@@ -4290,8 +4290,24 @@ p.form-messege {
 .login-margin{
    padding: 40px 0;
 }
-
-
+.g-prd{
+    padding-top: 20px;
+}
+.valid_btn{
+    background-color: #252525;
+    color: #ffffff;
+    display: inline-block;
+    font-weight: 600;
+    height: 45px;
+    line-height: 45px;
+    margin-top: 30px;
+    padding: 0 20px;
+    border: none;
+    transition: all 0.3s ease-in-out 0s;
+}
+.valid_btn:hover{
+    opacity: 0.7;
+}
 
 /*-----------------------
  * Log in Window
@@ -4377,6 +4393,190 @@ img.avatar {
     .nav-item .cancelbtn {
         width: 100%;
     }
+}
+
+.gallery img{
+    width: 200px;
+    min-height: 100px;
+    border: 2px solid #dddddd;
+    margin-top: 15px;
+    /* default Text*/
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    color: #cccccc;
+    display: inline-block;
+    margin-right: 10px;
+}
+
+.image-preview{
+    width: 200px;
+    min-height: 100px;
+    border: 2px solid #dddddd;
+    margin-top: 20px;
+    /* default Text*/
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    color: #cccccc;
+}
+
+
+/*-----------------------
+ * POPUP SUCSSES/ERROR
+-------------------------*/
+body {
+    font-family: 'Varela Round', sans-serif;
+    padding-right: 0px !important;
+}
+.modal-confirm {
+    color: #636363;
+    width: 325px;
+    margin: 30px auto;
+}
+.modal-confirm .modal-content {
+    padding: 20px;
+    border-radius: 5px;
+    border: none;
+}
+.modal-confirm .modal-header {
+    border-bottom: none;
+    position: relative;
+}
+.modal-confirm h4 {
+    text-align: center;
+    font-size: 26px;
+    margin: 30px 0 -15px;
+}
+.modal-confirm .form-control, .modal-confirm .btn {
+    min-height: 40px;
+    border-radius: 3px;
+}
+.modal-confirm .close {
+    position: absolute;
+    top: -5px;
+    right: -5px;
+}
+.modal-confirm .modal-footer {
+    border: none;
+    text-align: center;
+    border-radius: 5px;
+    font-size: 13px;
+}
+.modal-confirm .icon-box {
+    color: #fff;
+    position: absolute;
+    margin: 0 auto;
+    left: 0;
+    right: 0;
+    top: -70px;
+    width: 95px;
+    height: 95px;
+    border-radius: 50%;
+    z-index: 9;
+    background: #82ce34;
+    padding: 15px;
+    text-align: center;
+    box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.1);
+}
+.modal-confirm .icon-box i {
+    font-size: 58px;
+    position: relative;
+    top: 3px;
+}
+.modal-confirm.modal-dialog {
+    margin-top: 80px;
+}
+.modal-confirm .btn {
+    color: #fff;
+    border-radius: 4px;
+    background: #82ce34;
+    text-decoration: none;
+    transition: all 0.4s;
+    line-height: normal;
+    border: none;
+}
+.modal-confirm .btn:hover, .modal-confirm .btn:focus {
+    background: #6fb32b;
+    outline: none;
+}
+/*-----------------*/
+
+.modal-confirm-e {
+    color: #636363;
+    width: 325px;
+    margin: 80px auto 0;
+}
+.modal-confirm-e .modal-content {
+    padding: 20px;
+    border-radius: 5px;
+    border: none;
+}
+.modal-confirm-e .modal-header {
+    border-bottom: none;
+    position: relative;
+}
+.modal-confirm-e h4 {
+    text-align: center;
+    font-size: 26px;
+    margin: 30px 0 -15px;
+}
+.modal-confirm-e .form-control, .modal-confirm .btn {
+    min-height: 40px;
+    border-radius: 3px;
+}
+.modal-confirm-e .close {
+    position: absolute;
+    top: -5px;
+    right: -5px;
+}
+.modal-confirm-e .modal-footer {
+    border: none;
+    text-align: center;
+    border-radius: 5px;
+    font-size: 13px;
+}
+.modal-confirm-e .icon-box {
+    color: #fff;
+    position: absolute;
+    margin: 0 auto;
+    left: 0;
+    right: 0;
+    top: -70px;
+    width: 95px;
+    height: 95px;
+    border-radius: 50%;
+    z-index: 9;
+    background: #ef513a;
+    padding: 15px;
+    text-align: center;
+    box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.1);
+}
+.modal-confirm-e .icon-box i {
+    font-size: 56px;
+    position: relative;
+    top: 4px;
+}
+.modal-confirm-e .btn {
+    color: #fff;
+    border-radius: 4px;
+    background: #ef513a;
+    text-decoration: none;
+    transition: all 0.4s;
+    line-height: normal;
+    border: none;
+}
+.modal-confirm-e .btn:hover, .modal-confirm .btn:focus {
+    background: #da2c12;
+    outline: none;
+}
+
+.wrapper{
+    width:200px;
+    padding:20px;
+    height: 150px;
 }
 /*everything b•••••••••elow here is just setting up the page, so dont worry about it */
 /* copyright section end */
