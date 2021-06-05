@@ -4578,6 +4578,30 @@ body {
     padding:20px;
     height: 150px;
 }
+
+.pagination_style {
+    list-style: outside none none;
+    margin: 50px 0 0;
+    padding: 0;
+    text-align: center; }
+.pagination_style li {
+    display: inline-block;
+    margin: 0 3px 3px; }
+.pagination_style li a {
+    background-color: #f6f6f6;
+    color: #3f3f3f;
+    display: inline-block;
+    font-size: 13px;
+    font-weight: 500;
+    height: 40px;
+    line-height: 41px;
+    width: 40px; }
+.pagination_style li a:hover, .pagination_style li a.active {
+    background-color: #3f3f3f;
+    color: #fff; }
+@media only screen and (max-width: 767px) {
+    .pagination_style {
+        margin: 30px 0 0; } }
 /*everything b•••••••••elow here is just setting up the page, so dont worry about it */
 /* copyright section end */
 

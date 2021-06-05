@@ -1,4 +1,3 @@
-<!--  Copyright (C) 2021 Halimi Takkie Eddine  <takkie8halimi@gmail.com> -->
 <?php
 
 /* headers */
@@ -9,6 +8,12 @@ session_start();
 $username = $_POST['username'];
 $password = $_POST['password'];
 $error = "";
+
+$limit = 12;
+$page = isset($_GET['page']) ? $_GET['page'] : 1;
+$start = ($page - 1) * $limit;
+$Previous = $page - 1;
+$Next = $page + 1;
 
 
 if($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -165,10 +170,10 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
                          <div class="shop_sidebar">
                              <!-- Start Single Wedget -->
                              <div class="sidebar_widget search mb--60">
-                                 <h2 class="sidebar_title">Search</h2>
+                                 <h2 class="sidebar_title">Rechercher</h2>
                                  <div class="sidebar_search">
                                      <form action="#">
-                                         <input type="text" placeholder="Search for:">
+                                         <input type="text" placeholder="Rechercher:">
                                          <button type="submit"><i class="ti-search"></i></button>
                                      </form>
                                  </div>
@@ -193,30 +198,40 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
 
                              <!-- Start Single Wedget -->
                              <div class="sidebar_widget widget_categories mb--60">
-                                 <h2 class="sidebar_title">Categories</h2>
+                                 <h2 class="sidebar_title">Catégories</h2>
                                  <ul class="sidebar_categories">
-                                     <li><a href="#">Men <span>(01)</span></a></li>
-                                     <li><a href="#">Women <span>(01)</span></a></li>
-                                     <li><a href="#">All <span>(01)</span></a></li>
+                                     <?php
+                                         $connexion = OpenConnexion();
+                                         $query = "SELECT COUNT(DISTINCT pId) gender_count,
+                                                       COUNT(DISTINCT CASE WHEN Sexe = 'Homme'   THEN pId END) male_count,
+                                                       COUNT(DISTINCT CASE WHEN Sexe = 'Femme' THEN pId END) female_count
+                                                   FROM product";
+                                         $result = mysqli_query($connexion, $query);
+                                         $row = mysqli_fetch_row($result);
+                                     ?>
+                                     <li><a>Homme <span>(<?php echo $row[1]?>)</span></a></li>
+                                     <li><a>Femme <span>(<?php echo $row[2]?>)</span></a></li>
+                                     <li><a>Tous <span>(<?php echo $row[0]?>)</span></a></li>
                                  </ul>
+                                 <?php  CloseConnexion($connexion);?>
                              </div>
                              <!-- End Single Wedget -->
 
                              <!-- Start Single Wedget -->
                              <div class="sidebar_widget widget_banner mb--60">
                                  <div class="sidebar_banner">
-                                     <a href="#"><img src="images/carousel-slider/sidebar-banner.jpg" alt="sidebar banner"></a>
+                                     <a><img src="images/carousel-slider/sidebar-banner.jpg" alt="sidebar banner"></a>
                                  </div>
                              </div>
                              <!-- End Single Wedget -->
 
                              <!-- Start Single Wedget -->
                              <div class="sidebar_widget widget_tag">
-                                 <h2 class="sidebar_title">Tags</h2>
+                                 <h2 class="sidebar_title">Mots Clés</h2>
                                  <ul class="sidebar_tag">
-                                     <li><a href="#">Men</a></li>
-                                     <li><a href="#">Woman</a></li>
-                                     <li><a href="#">All</a></li>
+                                     <li><a>Homme</a></li>
+                                     <li><a>Femme</a></li>
+                                     <li><a>Tous</a></li>
                                  </ul>
                              </div>
                              <!-- End Single Wedget -->
@@ -229,18 +244,16 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
                                  <div class="shop-filter-tab">
                                      <div class="view_mode justify-content-center nav" role="tablist">
                                          <a class="active" href="#tab1" data-toggle="tab"> <i class="ti-layout-grid4-alt"></i></a>
-                                         <a class="" href="#tab2" data-toggle="tab"><i class="ti-list"></i></a>
                                      </div>
                                  </div>
                                  <div class="shop-found-selector">
-                                     <p>Showing 1–12 of 16 results</p>
-                                     <select>
-                                         <option>Sort by popularity</option>
-                                         <option>Sort by average rating</option>
-                                         <option>Sort by newness</option>
-                                         <option>Sort by price: low to high</option>
-                                         <option>Sort by price: high to low</option>
-                                     </select>
+                                     <p>Affichage des résultats 1–10 sur 12</p>
+                                         <select name="zoneSelect">
+                                             <option onclick="page_restrict('gender','Homme')">Trier par : Homme</option>
+                                             <option onclick="page_restrict('gender','Femme')">Trier par : Femme</option>
+                                             <option onclick="page_restrict('prix','pbh')">Trier par prix : de bas en haut</option>
+                                             <option onclick="page_restrict('prix','phb')">Trier par prix : de haut en bas</option>
+                                         </select>
                                  </div>
                              </div>
 
@@ -249,6 +262,27 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
                                      <!-- Start Single Product -->
                                      <?php
                                      $connexion = OpenConnexion();
+
+                                     if(!empty($_GET['gender'])) {
+                                         if($_GET['gender'] == 'Homme')
+                                         $query = "SELECT
+                                                p.pId,
+                                                p.pName,
+                                                p.pAPrice,
+                                                p.pPPrice,
+                                                p.sexe,
+                                                p.pImageName
+                                               FROM product AS p where p.sexe = 'Homme'";
+                                         else
+                                             $query = "SELECT
+                                                p.pId,
+                                                p.pName,
+                                                p.pAPrice,
+                                                p.pPPrice,
+                                                p.sexe,
+                                                p.pImageName
+                                               FROM product AS p where p.sexe = 'Femme'";
+                                     }else{
                                      $query = "SELECT
                                                 p.pId,
                                                 p.pName,
@@ -256,7 +290,9 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
                                                 p.pPPrice,
                                                 p.sexe,
                                                 p.pImageName
-                                               FROM product AS p;";
+                                               FROM product AS p 
+                                               LIMIT $start , $limit";
+                                     }
                                      $result = mysqli_query($connexion, $query);
                                      if ($result->num_rows > 0) {
                                          while($row = mysqli_fetch_row($result)) {
@@ -306,312 +342,27 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
                                      CloseConnexion($connexion);
                                      ?>
                                  </div>
-
-                                 <div class="row single_grid_product tab-pane fade" id="tab2" role="tabpanel">
-                                     <!-- Start Single Product -->
-                                     <div class="col-12">
-                                         <div class="product_list">
-                                             <div class="product_list__thumb">
-                                                 <a href="single-product.html">
-                                                     <img src="images/products/list1.png" alt="product img">
-                                                 </a>
-                                             </div>
-                                             <div class="product_list__content">
-                                                 <ul class="price">
-                                                     <li>
-                                                         <div class="product-item">
-                                                             <div class="pi-text">
-                                                                 <a href="single-product.html">
-                                                                     <h5>Pure Pineapple</h5>
-                                                                 </a>
-                                                                 <div class="product-price">
-                                                                     $14.00
-                                                                     <span>$35.00</span>
-                                                                 </div>
-                                                             </div>
-                                                         </div>
-                                                     </li>
-                                                 </ul>
-                                                 <p>But I must explain to you how all this mistaken idea of denouncing pleasure and praising pain was born</p>
-                                                 <ul class="cart_action">
-                                                     <li><a href="cart.html"><img src="images/add_to_cart.png" alt="icons"></a></li>
-                                                     <li><a title="Quick View" class="quickview" href="#"><img src="images/quick_view.png" alt="icons"></a></li>
-                                                 </ul>
-                                             </div>
-                                         </div>
-                                     </div>
-                                     <!-- End Single Product -->
-                                     <!-- Start Single Product -->
-                                     <div class="col-12">
-                                         <div class="product_list">
-                                             <div class="product_list__thumb">
-                                                 <a href="single-product.html">
-                                                     <img src="images/products/list2.png" alt="product img">
-                                                 </a>
-                                             </div>
-                                             <div class="product_list__content">
-                                                 <ul class="price">
-                                                     <li>
-                                                         <div class="product-item">
-                                                             <div class="pi-text">
-                                                                 <a href="single-product.html">
-                                                                     <h5>Pure Pineapple</h5>
-                                                                 </a>
-                                                                 <div class="product-price">
-                                                                     $14.00
-                                                                     <span>$35.00</span>
-                                                                 </div>
-                                                             </div>
-                                                         </div>
-                                                     </li>
-                                                 </ul>
-                                                 <p>But I must explain to you how all this mistaken idea of denouncing pleasure and praising pain was born</p>
-                                                 <ul class="cart_action">
-                                                     <li><a href="cart.html"><img src="images/add_to_cart.png" alt="icons"></a></li>
-                                                     <li><a title="Quick View" class="quickview" href="#"><img src="images/quick_view.png" alt="icons"></a></li>
-                                                 </ul>
-                                             </div>
-                                         </div>
-                                     </div>
-                                     <!-- End Single Product -->
-                                     <!-- Start Single Product -->
-                                     <div class="col-12">
-                                         <div class="product_list">
-                                             <div class="product_list__thumb">
-                                                 <a href="single-product.html">
-                                                     <img src="images/products/list3.png" alt="product img">
-                                                 </a>
-                                             </div>
-                                             <div class="product_list__content">
-                                                 <ul class="price">
-                                                     <li>
-                                                         <div class="product-item">
-                                                             <div class="pi-text">
-                                                                 <a href="single-product.html">
-                                                                     <h5>Pure Pineapple</h5>
-                                                                 </a>
-                                                                 <div class="product-price">
-                                                                     $14.00
-                                                                     <span>$35.00</span>
-                                                                 </div>
-                                                             </div>
-                                                         </div>
-                                                     </li>
-                                                 </ul>
-                                                 <p>But I must explain to you how all this mistaken idea of denouncing pleasure and praising pain was born</p>
-                                                 <ul class="cart_action">
-                                                     <li><a href="cart.html"><img src="images/add_to_cart.png" alt="icons"></a></li>
-                                                     <li><a title="Quick View" class="quickview" href="#"><img src="images/quick_view.png" alt="icons"></a></li>
-                                                 </ul>
-                                             </div>
-                                         </div>
-                                     </div>
-                                     <!-- End Single Product -->
-                                     <!-- Start Single Product -->
-                                     <div class="col-12">
-                                         <div class="product_list">
-                                             <div class="product_list__thumb">
-                                                 <a href="single-product.html">
-                                                     <img src="images/products/list4.png" alt="product img">
-                                                 </a>
-                                             </div>
-                                             <div class="product_list__content">
-                                                 <ul class="price">
-                                                     <li>
-                                                         <div class="product-item">
-                                                             <div class="pi-text">
-                                                                 <a href="single-product.html">
-                                                                     <h5>Pure Pineapple</h5>
-                                                                 </a>
-                                                                 <div class="product-price">
-                                                                     $14.00
-                                                                     <span>$35.00</span>
-                                                                 </div>
-                                                             </div>
-                                                         </div>
-                                                     </li>
-                                                 </ul>
-                                                 <p>But I must explain to you how all this mistaken idea of denouncing pleasure and praising pain was born</p>
-                                                 <ul class="cart_action">
-                                                     <li><a href="cart.html"><img src="images/add_to_cart.png" alt="icons"></a></li>
-                                                     <li><a title="Quick View" class="quickview" href="#"><img src="images/quick_view.png" alt="icons"></a></li>
-                                                 </ul>
-                                             </div>
-                                         </div>
-                                     </div>
-                                     <!-- End Single Product -->
-                                     <!-- Start Single Product -->
-                                     <div class="col-12">
-                                         <div class="product_list">
-                                             <div class="product_list__thumb">
-                                                 <a href="single-product.html">
-                                                     <img src="images/products/list5.png" alt="product img">
-                                                 </a>
-                                             </div>
-                                             <div class="product_list__content">
-                                                 <ul class="price">
-                                                     <li>
-                                                         <div class="product-item">
-                                                             <div class="pi-text">
-                                                                 <a href="single-product.html">
-                                                                     <h5>Pure Pineapple</h5>
-                                                                 </a>
-                                                                 <div class="product-price">
-                                                                     $14.00
-                                                                     <span>$35.00</span>
-                                                                 </div>
-                                                             </div>
-                                                         </div>
-                                                     </li>
-                                                 </ul>
-                                                 <p>But I must explain to you how all this mistaken idea of denouncing pleasure and praising pain was born</p>
-                                                 <ul class="cart_action">
-                                                     <li><a href="cart.html"><img src="images/add_to_cart.png" alt="icons"></a></li>
-                                                     <li><a title="Quick View" class="quickview" href="#"><img src="images/quick_view.png" alt="icons"></a></li>
-                                                 </ul>
-                                             </div>
-                                         </div>
-                                     </div>
-                                     <!-- End Single Product -->
-                                     <!-- Start Single Product -->
-                                     <div class="col-12">
-                                         <div class="product_list">
-                                             <div class="product_list__thumb">
-                                                 <a href="single-product.html">
-                                                     <img src="images/products/list6.png" alt="product img">
-                                                 </a>
-                                             </div>
-                                             <div class="product_list__content">
-                                                 <ul class="price">
-                                                     <li>
-                                                         <div class="product-item">
-                                                             <div class="pi-text">
-                                                                 <a href="single-product.html">
-                                                                     <h5>Pure Pineapple</h5>
-                                                                 </a>
-                                                                 <div class="product-price">
-                                                                     $14.00
-                                                                     <span>$35.00</span>
-                                                                 </div>
-                                                             </div>
-                                                         </div>
-                                                     </li>
-                                                 </ul>
-                                                 <p>But I must explain to you how all this mistaken idea of denouncing pleasure and praising pain was born</p>
-                                                 <ul class="cart_action">
-                                                     <li><a href="cart.html"><img src="images/add_to_cart.png" alt="icons"></a></li>
-                                                     <li><a title="Quick View" class="quickview" href="#"><img src="images/quick_view.png" alt="icons"></a></li>
-                                                 </ul>
-                                             </div>
-                                         </div>
-                                     </div>
-                                     <!-- End Single Product -->
-                                     <!-- Start Single Product -->
-                                     <div class="col-12">
-                                         <div class="product_list">
-                                             <div class="product_list__thumb">
-                                                 <a href="single-product.html">
-                                                     <img src="images/products/list7.png" alt="product img">
-                                                 </a>
-                                             </div>
-                                             <div class="product_list__content">
-                                                 <ul class="price">
-                                                     <li>
-                                                         <div class="product-item">
-                                                             <div class="pi-text">
-                                                                 <a href="single-product.html">
-                                                                     <h5>Pure Pineapple</h5>
-                                                                 </a>
-                                                                 <div class="product-price">
-                                                                     $14.00
-                                                                     <span>$35.00</span>
-                                                                 </div>
-                                                             </div>
-                                                         </div>
-                                                     </li>
-                                                 </ul>
-                                                 <p>But I must explain to you how all this mistaken idea of denouncing pleasure and praising pain was born</p>
-                                                 <ul class="cart_action">
-                                                     <li><a href="cart.html"><img src="images/add_to_cart.png" alt="icons"></a></li>
-                                                     <li><a title="Quick View" class="quickview" href="#"><img src="images/quick_view.png" alt="icons"></a></li>
-                                                 </ul>
-                                             </div>
-                                         </div>
-                                     </div>
-                                     <!-- End Single Product -->
-                                     <!-- Start Single Product -->
-                                     <div class="col-12">
-                                         <div class="product_list">
-                                             <div class="product_list__thumb">
-                                                 <a href="single-product.html">
-                                                     <img src="images/products/list8.png" alt="product img">
-                                                 </a>
-                                             </div>
-                                             <div class="product_list__content">
-                                                 <ul class="price">
-                                                     <li>
-                                                         <div class="product-item">
-                                                             <div class="pi-text">
-                                                                 <a href="single-product.html">
-                                                                     <h5>Pure Pineapple</h5>
-                                                                 </a>
-                                                                 <div class="product-price">
-                                                                     $14.00
-                                                                     <span>$35.00</span>
-                                                                 </div>
-                                                             </div>
-                                                         </div>
-                                                     </li>
-                                                 </ul>
-                                                 <p>But I must explain to you how all this mistaken idea of denouncing pleasure and praising pain was born</p>
-                                                 <ul class="cart_action">
-                                                     <li><a href="cart.html"><img src="images/add_to_cart.png" alt="icons"></a></li>
-                                                     <li><a title="Quick View" class="quickview" href="#"><img src="images/quick_view.png" alt="icons"></a></li>
-                                                 </ul>
-                                             </div>
-                                         </div>
-                                     </div>
-                                     <!-- End Single Product -->
-                                     <!-- Start Single Product -->
-                                     <div class="col-12">
-                                         <div class="product_list">
-                                             <div class="product_list__thumb">
-                                                 <a href="single-product.html">
-                                                     <img src="images/products/list9.png" alt="product img">
-                                                 </a>
-                                             </div>
-                                             <div class="product_list__content">
-                                                 <ul class="price">
-                                                     <li>
-                                                         <div class="product-item">
-                                                             <div class="pi-text">
-                                                                 <a href="single-product.html">
-                                                                     <h5>Pure Pineapple</h5>
-                                                                 </a>
-                                                                 <div class="product-price">
-                                                                     $14.00
-                                                                     <span>$35.00</span>
-                                                                 </div>
-                                                             </div>
-                                                         </div>
-                                                     </li>
-                                                 </ul>
-                                                 <p>But I must explain to you how all this mistaken idea of denouncing pleasure and praising pain was born</p>
-                                                 <ul class="cart_action">
-                                                     <li><a href="cart.html"><img src="images/add_to_cart.png" alt="icons"></a></li>
-                                                     <li><a title="Quick View" class="quickview" href="#"><img src="images/quick_view.png" alt="icons"></a></li>
-                                                 </ul>
-                                             </div>
-                                         </div>
-                                     </div>
-                                     <!-- End Single Product -->
-                                 </div>
                              </div>
-                            <!-- <ul class="pagination_style">
-                                 <li><a class="active" href="#">1</a></li>
-                                 <li><a href="#">2</a></li>
-                                 <li><a href="#"><i class="ti-angle-right"></i></a></li>
-                             </ul>-->
+                             <?php
+                                 $connexion = OpenConnexion();
+                                 $query = "SELECT count(pId) AS id FROM product";
+                                 $result = mysqli_query($connexion, $query);
+                                 $productsCount = mysqli_fetch_row($result);
+                                 $pages = ceil($productsCount[0] / $limit);
+                                 CloseConnexion($connexion);
+                             ?>
+                             <ul class="pagination_style">
+                                 <?php if(!($Previous == 0))
+                                    print'<li><a href="shop.php?page='.$Previous.'" aria-label="Previous"><i class="ti-angle-left"></i></a></li>';
+                                 ?>
+                                 <?php for($i = 1; $i<= $pages; $i++):
+                                     if($i == $_GET['page']) print'<li><a class="active" href="shop.php?page='.$i.'">'.$i.'</a></li>';
+                                     else print'<li><a href="shop.php?page='.$i.'">'.$i.'</a></li>';
+                                 endfor; ?>
+                                 <?php if(!($Next > $pages))
+                                    print'<li> <a href="shop.php?page='.$Next.'" aria-label="Next"><i class="ti-angle-right"></i></a></li>';
+                                 ?>
+                             </ul>
                          </div>
                      </div>
                  </div>
@@ -719,6 +470,18 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
                  prefix: "$"
              });
          </script>
+        <script>
+            function page_restrict(name, value)
+            {
+                var href = window.location.href;
+
+                    if(href.indexOf("?") > -1)
+                        window.location.href = href + "&" + name + "=" + value;
+                    if(href.indexOf("&") > -1)
+                        var  base_href = href.split("&");
+                        window.location.href = base_href[0] + "&" + name + "=" + value;
+            }
+        </script>
          <!-- Nav bar backround -->
    </body>
 </html>
