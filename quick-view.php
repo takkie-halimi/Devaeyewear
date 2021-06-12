@@ -34,16 +34,16 @@ require_once('php/connexion.php');
             if(isset($_GET['id'])) $id = $_GET['id'];
             $sub_dir = "product-".$id."";
             $connexion = OpenConnexion();
-            $query = ("SELECT
-                           p.pname,
-                           p.pAPrice,
-                           p.pPPrice,
-                           p.sexe,
-                           p.pImageName,
-                           pi.p_img1,
-                           pi.p_img2,
-                           pi.p_img3,
-                           pi.p_img4
+            $query = ("SELECT p.pName,
+                              p.pAPrice,
+                              p.pPPrice,
+                              p.gender,
+                              p.size,
+                              p.pImageName,
+                              pi.p_img1,
+                              pi.p_img2,
+                              pi.p_img3,
+                              pi.p_img4
                        FROM product AS p LEFT JOIN product_images pi ON pi.pImageName = p.pImageName
                        WHERE p.pId ='$id'");
 
@@ -52,14 +52,11 @@ require_once('php/connexion.php');
             ?>
             <div class="product-details-left">
                 <div class="product-details-images slider-navigation-2">
-                    <a href="products/<?php echo $sub_dir."/".$row[4];?>">
-                        <img src="products/<?php echo $sub_dir."/".$row[4];?>" alt="product image">
-                    </a>
                     <a href="products/<?php echo $sub_dir."/".$row[5];?>">
-                        <img src="/products/<?php echo $sub_dir."/".$row[5];?>" alt="product image">
+                        <img src="products/<?php echo $sub_dir."/".$row[5];?>" alt="product image">
                     </a>
                     <a href="products/<?php echo $sub_dir."/".$row[6];?>">
-                        <img src="products/<?php echo $sub_dir."/".$row[6];?>" alt="product image">
+                        <img src="/products/<?php echo $sub_dir."/".$row[6];?>" alt="product image">
                     </a>
                     <a href="products/<?php echo $sub_dir."/".$row[7];?>">
                         <img src="products/<?php echo $sub_dir."/".$row[7];?>" alt="product image">
@@ -67,13 +64,16 @@ require_once('php/connexion.php');
                     <a href="products/<?php echo $sub_dir."/".$row[8];?>">
                         <img src="products/<?php echo $sub_dir."/".$row[8];?>" alt="product image">
                     </a>
+                    <a href="products/<?php echo $sub_dir."/".$row[9];?>">
+                        <img src="products/<?php echo $sub_dir."/".$row[9];?>" alt="product image">
+                    </a>
                 </div>
                 <div class="product-details-thumbs slider-navigation-2">
-                    <img src="products/<?php echo $sub_dir."/".$row[4];?>" alt="product image thumb">
                     <img src="products/<?php echo $sub_dir."/".$row[5];?>" alt="product image thumb">
                     <img src="products/<?php echo $sub_dir."/".$row[6];?>" alt="product image thumb">
                     <img src="products/<?php echo $sub_dir."/".$row[7];?>" alt="product image thumb">
                     <img src="products/<?php echo $sub_dir."/".$row[8];?>" alt="product image thumb">
+                    <img src="products/<?php echo $sub_dir."/".$row[9];?>" alt="product image thumb">
                 </div>
             </div>
             <!--// Product Details Left -->
@@ -98,41 +98,43 @@ require_once('php/connexion.php');
                     <div class="product-item">
                         <div class="pi-price">
                             <div class="product-price">
-                                $<?php echo $row[1];?>
-                                <span>$<?php echo $row[2];?></span>
+                                €<?php echo $row[1];?>
+                                <span>€<?php echo $row[2];?></span>
                             </div>
                         </div>
                     </div>
                 </div>
+                <?php
+                   $size = $row[4];
+                   $ref = explode("-", $size);
+                ?>
                 <div class="product-details-size">
-                    <span>Size :</span>
+                    <span>Taille :</span>
                     <ul>
-                        <li class="checked"><span>S</span></li>
-                        <li><span>M</span></li>
-                        <li><span>L</span></li>
-                        <li><span>XL</span></li>
-                        <li><span>XXL</span></li>
+                        <li><?php echo $ref[0].' <i class="fa fa-square-o" aria-hidden="true"></i> '.$ref[1]?></li>
                     </ul>
                 </div>
                 <div class="product-details-categories">
                     <span>Categories :</span>
                     <ul>
-                        <li><a href="shop.html">All</a></li>
-                        <li><a href="shop.html"><?php echo $row[3];?></a></li>
+                        <li><a style="background: black;
+                                      color: white;
+                                      padding: 2px;
+                                      box-shadow: 5px 5px 2px 1px rgba(0, 0, 255, .2);">
+                                <?php echo $row[3];?>
+                            </a>
+                        </li>
                     </ul>
                 </div>
                 <div class="product-details-socialshare">
-                    <span>Share :</span>
+                    <span>Partager  :</span>
                     <ul>
                         <li><a class="facebook" href="#"><i class="fa fa-facebook"></i></a></li>
-                        <li><a class="twitter" href="#"><i class="fa fa-twitter"></i></a></li>
-                        <li><a class="google-plus" href="#"><i class="fa fa-google-plus"></i></a></li>
-                        <li><a class="linkedin" href="#"><i class="fa fa-linkedin"></i></a></li>
                         <li><a class="instagram" href="#"><i class="fa fa-instagram"></i></a></li>
                     </ul>
                 </div>
                 <div class="product-details-quantity">
-                    <a href="#" class="add-to-cart-button">
+                    <a href="contact.php" class="add-to-cart-button">
                         <span>Acheter Maintenant</span>
                     </a>
                 </div>

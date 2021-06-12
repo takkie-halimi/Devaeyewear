@@ -1,4 +1,3 @@
-<!--  Copyright (C) 2021 Halimi Takkie Eddine  <takkie8halimi@gmail.com> -->
 <?php
 
 /* headers */
@@ -52,7 +51,8 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
       <!-- font awesome -->
       <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-   </head>
+      <script src="js/jquery-1.12.4.js"></script>
+</head>
    <body>
 
          <div id="preloder">
@@ -73,7 +73,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
                            <a class="nav-link" href="index.php"><i class="fa fa-home" aria-hidden="true"></i>Accueil</a>
                        </li>
                        <li class="nav-item">
-                           <a class="nav-link" href="shop.php"><i class="fa fa-shopping-cart" aria-hidden="true"></i>Boutique</a>
+                           <a class="nav-link" href="boutique.php?page=1"><i class="fa fa-shopping-cart" aria-hidden="true"></i>Boutique</a>
                        </li>
                        <li class="nav-item">
                            <a class="nav-link" href="contact.php"><i class="fa fa-phone"></i>Contact</a>
@@ -137,8 +137,42 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
             </div>
          </nav>
 
+        <!-- 2<div class="carousel slide" data-ride="carousel" id="carouselExampleIndicators">
+             <ol class="carousel-indicators">
+                 <li class="active" data-slide-to="0" data-target="#carouselExampleIndicators"></li>
+                 <li data-slide-to="1" data-target="#carouselExampleIndicators"></li>
+                 <li data-slide-to="2" data-target="#carouselExampleIndicators"></li>
+             </ol>
+             <div class="carousel-inner">
+                 <div class="carousel-item active">
+                     <img alt="First slide" class="d-block w-100" src="images/carousel-slider/b5.jpg">
+                     <div class="carousel-caption d-none d-md-block">
+                         <h5 class="animated bounceInRight" style="animation-delay: 1s">Web Development</h5>
+                         <p class="animated bounceInLeft" style="animation-delay: 2s">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Maxime, nulla, tempore. Deserunt excepturi quas vero.</p>
+                         <p class="animated bounceInRight" style="animation-delay: 3s"><a href="#">More Info</a></p>
+                     </div>
+                 </div>
+                 <div class="carousel-item">
+                     <img alt="Second slide" class="d-block w-100" src="images/carousel-slider/b3.png">
+                     <div class="carousel-caption d-none d-md-block">
+                         <h5 class="animated slideInDown" style="animation-delay: 1s">web design</h5>
+                         <p class="animated fadeInUp" style="animation-delay: 2s">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Maxime, nulla, tempore. Deserunt excepturi quas vero.</p>
+                         <p class="animated zoomIn" style="animation-delay: 3s"><a href="#">More Info</a></p>
+                     </div>
+                 </div>
+                 <div class="carousel-item">
+                     <img alt="Third slide" class="d-block w-100" src="images/carousel-slider/b4.jpg">
+                     <div class="carousel-caption d-none d-md-block">
+                         <h5 class="animated zoomIn" style="animation-delay: 1s">Digital Marketing</h5>
+                         <p class="animated fadeInLeft" style="animation-delay: 2s">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Maxime, nulla, tempore. Deserunt excepturi quas vero.</p>
+                         <p class="animated zoomIn" style="animation-delay: 3s"><a href="#">More Info</a></p>
+                     </div>
+                 </div>
+             </div><a class="carousel-control-prev" data-slide="prev" href="#carouselExampleIndicators" role="button"><span aria-hidden="true" class="carousel-control-prev-icon"></span> <span class="sr-only">Previous</span></a> <a class="carousel-control-next" data-slide="next" href="#carouselExampleIndicators" role="button"><span aria-hidden="true" class="carousel-control-next-icon"></span> <span class="sr-only">Next</span></a>
+         </div> -->
          <!-- Slide section -->
-         <div class="carousel slide" data-ride="carousel" id="carouselExampleIndicators">
+
+        <div class="carousel slide" data-ride="carousel" id="carouselExampleIndicators">
             <ol class="carousel-indicators">
                <li class="active" data-slide-to="0" data-target="#carouselExampleIndicators"></li>
                <li data-slide-to="1" data-target="#carouselExampleIndicators"></li>
@@ -146,12 +180,12 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
             </ol>
             <div class="carousel-inner">
                <div class="carousel-item active">
-                  <img alt="First slide" class="d-block w-100" src="images/carousel-slider/b1.png">
+                  <img alt="First slide" class="d-block w-100" src="images/carousel-slider/b5.jpg">
                   <div class="carousel-caption">
-                     <h5 class="animated slideInDown" style="animation-delay: 1s">Get Start <br>Your Favriot Shoping</h5>
-                     <p class="animated zoomIn" style="animation-delay: 1s">
+                     <h5 class="animated zoomIn" style="animation-delay: 1s">Commencez<br>Vos Chats Préférés</h5>
+                     <p class="animated bounceInLeft" style="animation-delay: 1s">
                         <button class="buynow_bt">
-                        <a href="#">Shop Now</a>
+                        <a href="boutique.php?page=1">Boutique</a>
                         </button>
                      </p>
                   </div>
@@ -159,21 +193,21 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
                <div class="carousel-item">
                   <img alt="Second slide" class="d-block w-100" src="images/carousel-slider/b2.png">
                   <div class="carousel-caption">
-                     <h5 class="animated slideInDown" style="animation-delay: 1s">Get Start <br>Your Favriot Shoping</h5>
-                     <p class="animated zoomIn" style="animation-delay: 1s">
+                     <h5 class="animated slideInUp" style="animation-delay: 1s">Commencez<br>Vos Chats Préférés</h5>
+                     <p class="animated fadeInLeft" style="animation-delay: 1s">
                         <button class="buynow_bt">
-                           <a href="#">Shop Now</a>
+                            <a href="boutique.php?page=1">Boutique</a>
                         </button>
                      </p>
                   </div>
                </div>
                <div class="carousel-item">
-                  <img alt="Third slide" class="d-block w-100" src="images/carousel-slider/b3.png">
+                  <img alt="Third slide" class="d-block w-100" src="images/carousel-slider/b4.jpg">
                   <div class="carousel-caption">
-                     <h5 class="animated slideInDown" style="animation-delay: 1s">Get Start <br>Your Favriot Shoping</h5>
+                     <h5 class="animated slideInRight" style="animation-delay: 1s">Commencez<br>Vos Chats Préférés</h5>
                      <p class="animated zoomIn" style="animation-delay: 1s">
                         <button class="buynow_bt">
-                           <a href="#">Shop Now</a>
+                            <a href="boutique.php?page=1">Boutique</a>
                         </button>
                      </p>
                   </div>
@@ -196,135 +230,73 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
                      <div class="col-lg-3">
                          <div class="product-large set-bg" data-setbg="images/slider/women-large.jpg">
                              <h2>Women’s</h2>
-                             <a href="#">Discover More</a>
+                             <a href="boutique.php?page=1">Découvrir plus</a>
                          </div>
                      </div>
                      <div class="col-lg-8 offset-lg-1">
                          <div class="col-sm-12 text-center wow fadeInUp">
-                             <h2>WOMEN'S GLASSES</h2>
+                             <h2 class="shadow p-3 mb-5 bg-white" style="text-shadow: 0 0 3px #FF0000, 0 0 5px #0000FF; border-radius: 10px;">LUNETTES POUR FEMME</h2>
                          </div>
+                         <?php
+                         $connexion = OpenConnexion();
+                         $query = "SELECT p.pId,
+                                           p.pName,
+                                           p.pAPrice,
+                                           p.pPPrice,
+                                           p.gender,
+                                           p.size,
+                                           p.pImageName
+                                    FROM product AS p
+                                    WHERE p.gender = 'Femme'
+                                    ORDER BY RAND()
+                                    LIMIT 5";
+                         $result = mysqli_query($connexion, $query);?>
                          <div class="product-slider owl-carousel">
-                             <div class="product-item">
-                                 <div class="product">
-                                     <div class="thumb">
-                                         <a href="single-product.html">
-                                             <img src="images/products/product-1.jpg" alt="product img">
-                                         </a>
-                                         <div class="product_action">
-                                             <h4>
-                                                 <a href="single-product.html">Rinosin Glasses</a>
-                                             </h4>
-                                             <ul class="cart_action">
-                                                 <li>
-                                                     <a title="Quick View" class="quickview" href="#">
-                                                         <img src="images/quick_view.png" alt="icons">
-                                                     </a>
-                                                 </li>
-                                             </ul>
+                             <?php if ($result->num_rows > 0) {
+                                 while($row = mysqli_fetch_row($result)) {
+                                     $id = $row[0];
+                                     ?>
+                                     <div class="product-item">
+                                         <div class="product">
+                                             <div class="thumb">
+                                                 <a href="produit.php?id=<?php echo $row[0];?>">
+                                                     <img src="products/product-<?php echo $row[0]."/".$row[6];?>" alt="product img">
+                                                 </a>
+                                                 <div id="<?php echo $id;?>"  class="product_action">
+                                                     <h4>
+                                                         <a href="produit.php?id=<?php echo $row[0];?>"><?php echo $row[1];?></a>
+                                                     </h4>
+                                                     <ul class="cart_action">
+                                                         <li>
+                                                             <a href="cart.html">
+                                                                 <img src="images/add_to_cart.png" alt="icons">
+                                                             </a>
+                                                         </li>
+                                                         <li>
+                                                             <a id="<?php echo $id;?>" class="quickview">
+                                                                 <img id="loop" src="images/quick_view.png" alt="icons">
+                                                             </a>
+                                                         </li>
+                                                     </ul>
+                                                 </div>
+                                             </div>
+                                         </div>
+                                         <div class="pi-text">
+                                             <div class="catagory-name"><?php echo $row[4];?></div>
+                                             <a href="#">
+                                                 <h5><?php echo $row[1];?></h5>
+                                             </a>
+                                             <div class="product-price">
+                                                 €<?php echo $row[2];?>
+                                                 <span>€<?php echo $row[3];?></span>
+                                             </div>
                                          </div>
                                      </div>
-                                 </div>
-                                 <div class="pi-text">
-                                     <div class="catagory-name">Coat</div>
-                                     <a href="#">
-                                         <h5>Pure Pineapple</h5>
-                                     </a>
-                                     <div class="product-price">
-                                         $14.00
-                                         <span>$35.00</span>
-                                     </div>
-                                 </div>
-                             </div>
-                             <div class="product-item">
-                                 <div class="product">
-                                     <div class="thumb">
-                                         <a href="single-product.html">
-                                             <img src="images/products/product-2.jpg" alt="product img">
-                                         </a>
-                                         <div class="product_action">
-                                             <h4>
-                                                 <a href="single-product.html">Rinosin Glasses</a>
-                                             </h4>
-                                             <ul class="cart_action">
-                                                 <li>
-                                                     <a title="Quick View" class="quickview" href="#">
-                                                         <img src="images/quick_view.png" alt="icons">
-                                                     </a>
-                                                 </li>
-                                             </ul>
-                                         </div>
-                                     </div>
-                                 </div>
-                                 <div class="pi-text">
-                                     <div class="catagory-name">Shoes</div>
-                                     <a href="#">
-                                         <h5>Guangzhou sweater</h5>
-                                     </a>
-                                     <div class="product-price">
-                                         $13.00
-                                     </div>
-                                 </div>
-                             </div>
-                             <div class="product-item">
-                                 <div class="product">
-                                     <div class="thumb">
-                                         <a href="single-product.html">
-                                             <img src="images/products/product-3.jpg" alt="product img">
-                                         </a>
-                                         <div class="product_action">
-                                             <h4>
-                                                 <a href="single-product.html">Rinosin Glasses</a>
-                                             </h4>
-                                             <ul class="cart_action">
-                                                 <li>
-                                                     <a title="Quick View" class="quickview" href="#">
-                                                         <img src="images/quick_view.png" alt="icons">
-                                                     </a>
-                                                 </li>
-                                             </ul>
-                                         </div>
-                                     </div>
-                                 </div>
-                                 <div class="pi-text">
-                                     <div class="catagory-name">Towel</div>
-                                     <a href="#">
-                                         <h5>Pure Pineapple</h5>
-                                     </a>
-                                     <div class="product-price">
-                                         $34.00
-                                     </div>
-                                 </div>
-                             </div>
-                             <div class="product-item">
-                                 <div class="product">
-                                     <div class="thumb">
-                                         <a href="single-product.html">
-                                             <img src="images/products/product-4.jpg" alt="product img">
-                                         </a>
-                                         <div class="product_action">
-                                             <h4>
-                                                 <a href="single-product.html">Rinosin Glasses</a>
-                                             </h4>
-                                             <ul class="cart_action">
-                                                 <li>
-                                                     <a title="Quick View" class="quickview" href="#">
-                                                         <img src="images/quick_view.png" alt="icons">
-                                                     </a>
-                                                 </li>
-                                             </ul>
-                                         </div>
-                                     </div>
-                                 </div>
-                                 <div class="pi-text">
-                                     <div class="catagory-name">Towel</div>
-                                     <a href="#">
-                                         <h5>Converse Shoes</h5>
-                                     </a>
-                                     <div class="product-price">
-                                         $34.00
-                                     </div>
-                                 </div>
-                             </div>
+                                     <?php
+                                 }}
+                             else echo "0 results";
+                             CloseConnexion($connexion);
+                             ?>
                          </div>
                      </div>
                  </div>
@@ -338,27 +310,66 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
              <div class="container bg-light">
                  <div class="row">
                      <div class="col-sm-12 text-center wow fadeInUp">
-                         <h2>LATEST EYE GLASSES</h2>
+                         <h2 class="shadow-sm p-3 mb-5 bg-white" style="text-shadow: 2px 2px 5px red; border-radius: 50%;">DERNIÈRES LUNETTES</h2>
                      </div>
                      <div class="col-md-12 px-4 pt-0">
                          <div class="owl-carousel carousel_se_02_carousel owl-theme">
-                             <!-- 01 -->
+                             <?php
+                                 $connexion = OpenConnexion();
+                                 $miniQuery = "SELECT p.pId FROM product AS p ORDER BY p.pId DESC LIMIT 2";
+                                 $result = mysqli_query($connexion, $miniQuery);
+                                 $row = mysqli_fetch_row($result);
+                                 $lastProduct = $row[0];
+                                 $beforeLastProduct = $row[1];
+                                 $query = "SELECT
+                                            p.pId,
+                                            p.pName,
+                                            p.pAPrice,
+                                            p.pPPrice,
+                                            p.gender,
+                                            p.size,
+                                            p.pImageName
+                                          FROM product AS p
+                                          ORDER BY p.pId DESC LIMIT 6";
+                                 $result = mysqli_query($connexion, $query);
+                                 if ($result->num_rows > 0) {
+                                 while($row = mysqli_fetch_row($result)) {
+                                 $id = $row[0];
+                             ?>
                              <div class="item">
                                  <div class="col-md-12">
                                      <div class="product-item">
                                          <div class="product">
                                              <div class="thumb">
-                                                 <a href="single-product.html">
-                                                     <img src="images/products/product-1.jpg" alt="product img">
-                                                 </a>
-                                                 <div class="product_action">
+                                                 <?php
+                                                 if($row[0] == $lastProduct){?>
+                                                     <a href="produit.php?id=<?php echo $row[0];?>">
+                                                         <img src="products/product-<?php echo $row[0]."/".$row[6];?>" alt="product img">
+                                                         <span class="spanProduct">Nouveau</span>
+                                                     </a>
+                                                 <?php }else if($row[0] == $beforeLastProduct){ ?>
+                                                     <a href="produit.php?id=<?php echo $row[0];?>">
+                                                         <img src="products/product-<?php echo $row[0]."/".$row[6];?>" alt="product img">
+                                                         <span class="spanProduct">Nouveau</span>
+                                                     </a>
+                                                 <?php }else{?>
+                                                     <a href="produit.php?id=<?php echo $row[0];?>">
+                                                         <img src="products/product-<?php echo $row[0]."/".$row[6];?>" alt="product img">
+                                                     </a>
+                                                 <?php }?>
+                                                 <div id="<?php echo $id;?>"  class="product_action">
                                                      <h4>
-                                                         <a href="single-product.html">Rinosin Glasses</a>
+                                                         <a href="produit.php?id=<?php echo $row[0];?>"><?php echo $row[1];?></a>
                                                      </h4>
                                                      <ul class="cart_action">
                                                          <li>
-                                                             <a title="Quick View" class="quickview">
-                                                                 <img src="images/quick_view.png" alt="icons">
+                                                             <a href="cart.html">
+                                                                 <img src="images/add_to_cart.png" alt="icons">
+                                                             </a>
+                                                         </li>
+                                                         <li>
+                                                             <a id="<?php echo $id;?>" class="quickview">
+                                                                 <img id="loop" src="images/quick_view.png" alt="icons">
                                                              </a>
                                                          </li>
                                                      </ul>
@@ -366,198 +377,22 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
                                              </div>
                                          </div>
                                          <div class="pi-text">
-                                             <div class="catagory-name">Coat</div>
+                                             <div class="catagory-name"><?php echo $row[4];?></div>
                                              <a href="#">
-                                                 <h5>Pure Pineapple</h5>
+                                                 <h5><?php echo $row[1];?></h5>
                                              </a>
                                              <div class="product-price">
-                                                 $14.00
-                                                 <span>$35.00</span>
+                                                 €<?php echo $row[2];?>
+                                                 <span>€<?php echo $row[3];?></span>
                                              </div>
                                          </div>
                                      </div>
                                  </div>
                              </div>
-                             <!-- 2 -->
-                             <div class="item">
-                                 <div class="col-md-12 wow fadeInUp">
-                                     <div class="product-item">
-                                         <div class="product">
-                                             <div class="thumb">
-                                                 <a href="single-product.html">
-                                                     <img src="images/products/product-2.jpg" alt="product img">
-                                                 </a>
-                                                 <div class="product_action">
-                                                     <h4>
-                                                         <a href="single-product.html">Rinosin Glasses</a>
-                                                     </h4>
-                                                     <ul class="cart_action">
-                                                         <li>
-                                                             <a title="Quick View" class="quickview">
-                                                                 <img src="images/quick_view.png" alt="icons">
-                                                             </a>
-                                                         </li>
-                                                     </ul>
-                                                 </div>
-                                             </div>
-                                         </div>
-                                         <div class="pi-text">
-                                             <div class="catagory-name">Coat</div>
-                                             <a href="#">
-                                                 <h5>Pure Pineapple</h5>
-                                             </a>
-                                             <div class="product-price">
-                                                 $14.00
-                                                 <span>$35.00</span>
-                                             </div>
-                                         </div>
-                                     </div>
-                                 </div>
-                             </div>
-                             <!-- 3 -->
-                             <div class="item">
-                                 <div class="col-md-12 wow fadeInUp">
-                                     <div class="product-item">
-                                         <div class="product">
-                                             <div class="thumb">
-                                                 <a href="single-product.html">
-                                                     <img src="images/products/product-3.jpg" alt="product img">
-                                                 </a>
-                                                 <div class="product_action">
-                                                     <h4>
-                                                         <a href="single-product.html">Rinosin Glasses</a>
-                                                     </h4>
-                                                     <ul class="cart_action">
-                                                         <li>
-                                                             <a title="Quick View" class="quickview">
-                                                                 <img src="images/quick_view.png" alt="icons">
-                                                             </a>
-                                                         </li>
-                                                     </ul>
-                                                 </div>
-                                             </div>
-                                         </div>
-                                         <div class="pi-text">
-                                             <div class="catagory-name">Coat</div>
-                                             <a href="#">
-                                                 <h5>Pure Pineapple</h5>
-                                             </a>
-                                             <div class="product-price">
-                                                 $14.00
-                                                 <span>$35.00</span>
-                                             </div>
-                                         </div>
-                                     </div>
-                                 </div>
-                             </div>
-                             <!-- 4 -->
-                             <div class="item">
-                                 <div class="product-item">
-                                     <div class="col-md-12 wow fadeInUp">
-                                         <div class="product">
-                                             <div class="thumb">
-                                                 <a href="single-product.html">
-                                                     <img src="images/products/product-4.jpg" alt="product img">
-                                                 </a>
-                                                 <div class="product_action">
-                                                     <h4>
-                                                         <a href="single-product.html">Rinosin Glasses</a>
-                                                     </h4>
-                                                     <ul class="cart_action">
-                                                         <li>
-                                                             <a title="Quick View" class="quickview">
-                                                                 <img src="images/quick_view.png" alt="icons">
-                                                             </a>
-                                                         </li>
-                                                     </ul>
-                                                 </div>
-                                             </div>
-                                         </div>
-                                         <div class="pi-text">
-                                             <div class="catagory-name">Coat</div>
-                                             <a href="#">
-                                                 <h5>Pure Pineapple</h5>
-                                             </a>
-                                             <div class="product-price">
-                                                 $14.00
-                                                 <span>$35.00</span>
-                                             </div>
-                                         </div>
-                                     </div>
-                                 </div>
-                             </div>
-                             <!-- 5 -->
-                             <div class="item">
-                                 <div class="product-item">
-                                     <div class="col-md-12 wow fadeInUp">
-                                         <div class="product">
-                                             <div class="thumb">
-                                                 <a href="single-product.html">
-                                                     <img src="images/products/product-5.jpg" alt="product img">
-                                                 </a>
-                                                 <div class="product_action">
-                                                     <h4>
-                                                         <a href="single-product.html">Rinosin Glasses</a>
-                                                     </h4>
-                                                     <ul class="cart_action">
-                                                         <li>
-                                                             <a title="Quick View" class="quickview">
-                                                                 <img src="images/quick_view.png" alt="icons">
-                                                             </a>
-                                                         </li>
-                                                     </ul>
-                                                 </div>
-                                             </div>
-                                         </div>
-                                         <div class="pi-text">
-                                             <div class="catagory-name">Coat</div>
-                                             <a href="#">
-                                                 <h5>Pure Pineapple</h5>
-                                             </a>
-                                             <div class="product-price">
-                                                 $14.00
-                                                 <span>$35.00</span>
-                                             </div>
-                                         </div>
-                                     </div>
-                                 </div>
-                             </div>
-                             <!-- 6 -->
-                             <div class="item">
-                                 <div class="product-item">
-                                     <div class="col-md-12">
-                                         <div class="product">
-                                             <div class="thumb">
-                                                 <a href="single-product.html">
-                                                     <img src="images/products/product-6.jpg" alt="product img">
-                                                 </a>
-                                                 <div class="product_action">
-                                                     <h4>
-                                                         <a href="single-product.html">Rinosin Glasses</a>
-                                                     </h4>
-                                                     <ul class="cart_action">
-                                                         <li>
-                                                             <a title="Quick View" class="quickview">
-                                                                 <img src="images/quick_view.png" alt="icons">
-                                                             </a>
-                                                         </li>
-                                                     </ul>
-                                                 </div>
-                                             </div>
-                                         </div>
-                                         <div class="pi-text">
-                                             <div class="catagory-name">Coat</div>
-                                             <a href="#">
-                                                 <h5>Pure Pineapple</h5>
-                                             </a>
-                                             <div class="product-price">
-                                                 $14.00
-                                                 <span>$35.00</span>
-                                             </div>
-                                         </div>
-                                     </div>
-                                 </div>
-                             </div>
+                             <?php
+                                 }}
+                                 CloseConnexion($connexion);
+                             ?>
                          </div>
                      </div>
                  </div>
@@ -570,23 +405,46 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
                  <div class="row">
                      <div class="col-lg-8">
                          <div class="col-sm-12 text-center wow fadeInUp">
-                             <h2>MEN'S GLASSES</h2>
+                             <h2 class="shadow p-3 mb-5 bg-white" style="text-shadow: 1px 1px 2px black, 0 0 25px blue, 0 0 5px darkblue; border-radius: 50%;">LUNETTES POUR HOMMES</h2>
                          </div>
+                         <?php
+                         $connexion = OpenConnexion();
+                         $query = "SELECT p.pId,
+                                          p.pName,
+                                          p.pAPrice,
+                                          p.pPPrice,
+                                          p.gender,
+                                          p.size,
+                                          p.pImageName
+                                    FROM product AS p
+                                    WHERE p.gender = 'Homme'
+                                    ORDER BY RAND()
+                                    LIMIT 5";
+                         $result = mysqli_query($connexion, $query);?>
                          <div class="product-slider owl-carousel">
+                             <?php if ($result->num_rows > 0) {
+                                 while($row = mysqli_fetch_row($result)) {
+                                      $id = $row[0];
+                             ?>
                              <div class="product-item">
                                  <div class="product">
                                      <div class="thumb">
-                                         <a href="single-product.html">
-                                             <img src="images/products/product-1.jpg" alt="product img">
+                                         <a href="produit.php?id=<?php echo $row[0];?>">
+                                             <img src="products/product-<?php echo $row[0]."/".$row[6];?>" alt="product img">
                                          </a>
-                                         <div class="product_action">
+                                         <div id="<?php echo $id;?>"  class="product_action">
                                              <h4>
-                                                 <a href="single-product.html">Rinosin Glasses</a>
+                                                 <a href="produit.php?id=<?php echo $row[0];?>"><?php echo $row[1];?></a>
                                              </h4>
                                              <ul class="cart_action">
                                                  <li>
-                                                     <a title="Quick View" class="quickview" href="#">
-                                                         <img src="images/quick_view.png" alt="icons">
+                                                     <a href="cart.html">
+                                                         <img src="images/add_to_cart.png" alt="icons">
+                                                     </a>
+                                                 </li>
+                                                 <li>
+                                                     <a id="<?php echo $id;?>" class="quickview">
+                                                         <img id="loop" src="images/quick_view.png" alt="icons">
                                                      </a>
                                                  </li>
                                              </ul>
@@ -594,113 +452,27 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
                                      </div>
                                  </div>
                                  <div class="pi-text">
-                                     <div class="catagory-name">Coat</div>
+                                     <div class="catagory-name"><?php echo $row[4];?></div>
                                      <a href="#">
-                                         <h5>Pure Pineapple</h5>
+                                         <h5><?php echo $row[1];?></h5>
                                      </a>
                                      <div class="product-price">
-                                           <span>$35.00</span>
-                                       $14.00
-                                         <span>$35.00</span>
+                                         €<?php echo $row[2];?>
+                                         <span>€<?php echo $row[3];?></span>
                                      </div>
                                  </div>
                              </div>
-                             <div class="product-item">
-                                 <div class="product">
-                                     <div class="thumb">
-                                         <a href="single-product.html">
-                                             <img src="images/products/product-2.jpg" alt="product img">
-                                         </a>
-                                         <div class="product_action">
-                                             <h4>
-                                                 <a href="single-product.html">Rinosin Glasses</a>
-                                             </h4>
-                                             <ul class="cart_action">
-                                                 <li>
-                                                     <a title="Quick View" class="quickview" href="#">
-                                                         <img src="images/quick_view.png" alt="icons">
-                                                     </a>
-                                                 </li>
-                                             </ul>
-                                         </div>
-                                     </div>
-                                 </div>
-                                 <div class="pi-text">
-                                     <div class="catagory-name">Shoes</div>
-                                     <a href="#">
-                                         <h5>Guangzhou sweater</h5>
-                                     </a>
-                                     <div class="product-price">
-                                         $13.00
-                                     </div>
-                                 </div>
-                             </div>
-                             <div class="product-item">
-                                 <div class="product">
-                                     <div class="thumb">
-                                         <a href="single-product.html">
-                                             <img src="images/products/product-3.jpg" alt="product img">
-                                         </a>
-                                         <div class="product_action">
-                                             <h4>
-                                                 <a href="single-product.html">Rinosin Glasses</a>
-                                             </h4>
-                                             <ul class="cart_action">
-                                                 <li>
-                                                     <a title="Quick View" class="quickview" href="#">
-                                                         <img src="images/quick_view.png" alt="icons">
-                                                     </a>
-                                                 </li>
-                                             </ul>
-                                         </div>
-                                     </div>
-                                 </div>
-                                 <div class="pi-text">
-                                     <div class="catagory-name">Towel</div>
-                                     <a href="#">
-                                         <h5>Pure Pineapple</h5>
-                                     </a>
-                                     <div class="product-price">
-                                         $34.00
-                                     </div>
-                                 </div>
-                             </div>
-                             <div class="product-item">
-                                 <div class="product">
-                                     <div class="thumb">
-                                         <a href="single-product.html">
-                                             <img src="images/products/product-4.jpg" alt="product img">
-                                         </a>
-                                         <div class="product_action">
-                                             <h4>
-                                                 <a href="single-product.html">Rinosin Glasses</a>
-                                             </h4>
-                                             <ul class="cart_action">
-                                                 <li>
-                                                     <a title="Quick View" class="quickview" href="#">
-                                                         <img src="images/quick_view.png" alt="icons">
-                                                     </a>
-                                                 </li>
-                                             </ul>
-                                         </div>
-                                     </div>
-                                 </div>
-                                 <div class="pi-text">
-                                     <div class="catagory-name">Towel</div>
-                                     <a href="#">
-                                         <h5>Converse Shoes</h5>
-                                     </a>
-                                     <div class="product-price">
-                                         $34.00
-                                     </div>
-                                 </div>
-                             </div>
+                             <?php
+                                 }}
+                                 else echo "0 results";
+                                 CloseConnexion($connexion);
+                             ?>
                          </div>
                      </div>
                      <div class="col-lg-3 offset-lg-1">
                          <div class="product-large set-bg m-large" data-setbg="images/slider/man-large.jpg">
                              <h2>Men’s</h2>
-                             <a href="#">Discover More</a>
+                             <a href="boutique.php?page=1">Découvrir plus</a>
                          </div>
                      </div>
                  </div>
@@ -725,8 +497,6 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
                          <div class="footer-social">
                             <a href="#"><i class="fa fa-facebook"></i></a>
                             <a href="#"><i class="fa fa-instagram"></i></a>
-                            <a href="#"><i class="fa fa-twitter"></i></a>
-                            <a href="#"><i class="fa fa-pinterest"></i></a>
                          </div>
                       </div>
                    </div>
@@ -763,126 +533,26 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
           </div>
 
          <!-- Quick View Modal -->
+         <!-- Quick View Modal -->
          <div class="quick-view-modal">
-            <div class="quick-view-modal-inner">
-                <div class="container">
-                    <div class="product-details">
-                        <!-- Product Details Left -->
-                        <?php
-                        $sub_dir = "product-".$id."";
-                        $connexion = OpenConnexion();
-                        $query = ("SELECT
-                                               p.pname,
-                                               p.pPPrice,
-                                               p.pAPrice,
-                                               p.sexe,
-                                               p.pImageName,
-                                               pi.p_img1,
-                                               pi.p_img2,
-                                               pi.p_img3,
-                                               pi.p_img4
-                                        from product as p LEFT JOIN product_images pi on pi.pImageName = p.pImageName
-                                        WHERE p.pId ='$id'");
-
-                        $result = mysqli_query($connexion,$query);
-                        $row = mysqli_fetch_row($result);
-                        ?>
-                        <div class="product-details-left">
-                            <div class="product-details-images slider-navigation-2">
-                                <a href="products/<?php echo $sub_dir."/".$row[4];?>">
-                                    <img src="products/<?php echo $sub_dir."/".$row[4];?>" alt="product image">
-                                </a>
-                                <a href="products/<?php echo $sub_dir."/".$row[5];?>">
-                                    <img src="/products/<?php echo $sub_dir."/".$row[5];?>" alt="product image">
-                                </a>
-                                <a href="products/<?php echo $sub_dir."/".$row[6];?>">
-                                    <img src="products/<?php echo $sub_dir."/".$row[6];?>" alt="product image">
-                                </a>
-                                <a href="products/<?php echo $sub_dir."/".$row[7];?>">
-                                    <img src="products/<?php echo $sub_dir."/".$row[7];?>" alt="product image">
-                                </a>
-                                <a href="products/<?php echo $sub_dir."/".$row[8];?>">
-                                    <img src="products/<?php echo $sub_dir."/".$row[8];?>" alt="product image">
-                                </a>
-                            </div>
-                            <div class="product-details-thumbs slider-navigation-2">
-                                <img src="products/<?php echo $sub_dir."/".$row[4];?>" alt="product image thumb">
-                                <img src="products/<?php echo $sub_dir."/".$row[5];?>" alt="product image thumb">
-                                <img src="products/<?php echo $sub_dir."/".$row[6];?>" alt="product image thumb">
-                                <img src="products/<?php echo $sub_dir."/".$row[7];?>" alt="product image thumb">
-                                <img src="products/<?php echo $sub_dir."/".$row[8];?>" alt="product image thumb">
-                            </div>
-                        </div>
-                        <!--// Product Details Left -->
-
-                        <!-- Product Details Right -->
-                        <div class="product-details-right">
-                            <h5 class="product-title"><?php echo $row[0];?></h5>
-
-                            <div class="ratting-stock-availbility">
-                                <div class="ratting-box">
-                                    <span><i class="fa fa-star"></i></span>
-                                    <span><i class="fa fa-star"></i></span>
-                                    <span><i class="fa fa-star"></i></span>
-                                    <span><i class="fa fa-star"></i></span>
-                                    <span><i class="fa fa-star"></i></span>
-                                </div>
-                                <span class="stock-available">In stock</span>
-                            </div>
-                            <p>Clean, classic, and comfortable. The glasses takes the best of both feminine and masculine qualities.</p>
-
-                            <div class="price-box">
-                                <div class="product-item">
-                                    <div class="pi-price">
-                                        <div class="product-price">
-                                            $<?php echo $row[1];?>
-                                            <span>$<?php echo $row[2];?></span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="product-details-size">
-                                <span>Size :</span>
-                                <ul>
-                                    <li class="checked"><span>S</span></li>
-                                    <li><span>M</span></li>
-                                    <li><span>L</span></li>
-                                    <li><span>XL</span></li>
-                                    <li><span>XXL</span></li>
-                                </ul>
-                            </div>
-                            <div class="product-details-categories">
-                                <span>Categories :</span>
-                                <ul>
-                                    <li><a href="shop.html">All</a></li>
-                                    <li><a href="shop.html"><?php echo $row[3];?></a></li>
-                                </ul>
-                            </div>
-                            <div class="product-details-socialshare">
-                                <span>Share :</span>
-                                <ul>
-                                    <li><a class="facebook" href="#"><i class="fa fa-facebook"></i></a></li>
-                                    <li><a class="twitter" href="#"><i class="fa fa-twitter"></i></a></li>
-                                    <li><a class="google-plus" href="#"><i class="fa fa-google-plus"></i></a></li>
-                                    <li><a class="linkedin" href="#"><i class="fa fa-linkedin"></i></a></li>
-                                    <li><a class="instagram" href="#"><i class="fa fa-instagram"></i></a></li>
-                                </ul>
-                            </div>
-                            <div class="product-details-quantity">
-                                <a href="#" class="add-to-cart-button">
-                                    <span>Acheter Maintenant</span>
-                                </a>
-                            </div>
-                        </div>
-                        <!--// Product Details Right -->
-                    </div>
-                </div>
-                <?php CloseConnexion($connexion); ?>
-               <button class="close-quickview-modal"><i class="fa fa-close"></i></button>
-            </div>
-         </div></div>
+             <div id='view' class="quick-view-modal-inner">
+             </div>
+         </div>
          <!--// End Quick View Modal -->
-
+         <script>
+             $('.quickview').mouseover( function(){
+                 $.ajax({
+                     method: "GET",
+                     url: "quick-view.php?id="+this.id,
+                     success: function(result){
+                         $('#view').html(result);
+                     }
+                 });
+             });
+             $('.quickview').click( function() {
+                 $('.quick-view-modal').toggleClass('is-visible');
+             });
+         </script>
 
          <!-- Scripts section -->
          <!-- ------------------------------------------- //-->

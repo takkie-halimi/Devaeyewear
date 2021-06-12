@@ -152,7 +152,7 @@ if(isset($_POST['d_submit'])) {
                     <a class="nav-link" href="index.php"><i class="fa fa-home" aria-hidden="true"></i>Accueil</a>
                  </li>
                  <li class="nav-item">
-                    <a class="nav-link" href="shop.php"><i class="fa fa-shopping-cart" aria-hidden="true"></i>Boutique</a>
+                    <a class="nav-link" href="boutique.php?page=1"><i class="fa fa-shopping-cart" aria-hidden="true"></i>Boutique</a>
                  </li>
                  <li class="nav-item">
                     <a class="nav-link" href="contact.php"><i class="fa fa-phone"></i>Contact</a>
@@ -434,8 +434,6 @@ if(isset($_POST['d_submit'])) {
                      <div class="footer-social">
                         <a href="#"><i class="fa fa-facebook"></i></a>
                         <a href="#"><i class="fa fa-instagram"></i></a>
-                        <a href="#"><i class="fa fa-twitter"></i></a>
-                        <a href="#"><i class="fa fa-pinterest"></i></a>
                      </div>
                   </div>
                </div>

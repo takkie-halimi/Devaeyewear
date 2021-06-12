@@ -57,17 +57,17 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
       <!-- font awesome -->
       <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-      <script src="js/jquery.min.js"></script>
+      <script src="js/jquery-1.12.4.js"></script>
+      <link rel="stylesheet" href="css/jquery-ui.css">
 
 </head>
    <body>
 
-        <!-- <div id="preloder">
+        <div id="preloder">
             <div class="loader"></div>
-         </div>-->
+         </div>
          <!-- Quickview Window -->
          <div class="hamburger-box button mobile-toggle"></div>
-        <div id="loader"></div>
          <!-- End Quickview Window -->
 
          <!-- navigation Bar -->
@@ -81,7 +81,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
                            <a class="nav-link" href="index.php"><i class="fa fa-home" aria-hidden="true"></i>Accueil</a>
                        </li>
                        <li class="nav-item">
-                           <a class="nav-link" href="shop.php"><i class="fa fa-shopping-cart" aria-hidden="true"></i>Boutique</a>
+                           <a class="nav-link" href="boutique.php"><i class="fa fa-shopping-cart" aria-hidden="true"></i>Boutique</a>
                        </li>
                        <li class="nav-item">
                            <a class="nav-link" href="contact.php"><i class="fa fa-phone"></i>Contact</a>
@@ -172,14 +172,13 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
                              <div class="sidebar_widget search mb--60">
                                  <h2 class="sidebar_title">Rechercher</h2>
                                  <div class="sidebar_search">
-                                     <form action="#">
-                                         <input type="text" placeholder="Rechercher:">
-                                         <button type="submit"><i class="ti-search"></i></button>
+                                     <form action="" method="POST">
+                                         <input id="searchBar" name="searchBar" type="text" placeholder="Rechercher:">
+                                         <button name="r_submit" type="submit"><i class="ti-search"></i></button>
                                      </form>
                                  </div>
                              </div>
                              <!-- End Single Wedget -->
-
                              <!-- Start Single Wedget -->
                              <div class="sidebar_widget widget_price_filter mb--60">
                                  <h2 class="sidebar_title">Filter</h2>
@@ -203,8 +202,8 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
                                      <?php
                                          $connexion = OpenConnexion();
                                          $query = "SELECT COUNT(DISTINCT pId) gender_count,
-                                                       COUNT(DISTINCT CASE WHEN Sexe = 'Homme'   THEN pId END) male_count,
-                                                       COUNT(DISTINCT CASE WHEN Sexe = 'Femme' THEN pId END) female_count
+                                                       COUNT(DISTINCT CASE WHEN gender = 'Homme'   THEN pId END) male_count,
+                                                       COUNT(DISTINCT CASE WHEN gender = 'Femme' THEN pId END) female_count
                                                    FROM product";
                                          $result = mysqli_query($connexion, $query);
                                          $row = mysqli_fetch_row($result);
@@ -261,53 +260,93 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
                                  <div class="row single_grid_product tab-pane fade show active" id="tab1" role="tabpanel">
                                      <!-- Start Single Product -->
                                      <?php
-                                     $connexion = OpenConnexion();
+                                         if(!empty($_GET['gender'])) {
+                                             if($_GET['gender'] == 'Homme')
+                                                 $query = "SELECT p.pId,
+                                                                  p.pName,
+                                                                  p.pAPrice,
+                                                                  p.pPPrice,
+                                                                  p.gender,
+                                                                  p.size,
+                                                                  p.pImageName
+                                                       FROM product AS p where p.gender = 'Homme'
+                                                       LIMIT $start , $limit";
+                                             else
+                                                 $query = "SELECT p.pId,
+                                                                  p.pName,
+                                                                  p.pAPrice,
+                                                                  p.pPPrice,
+                                                                  p.gender,
+                                                                  p.size,
+                                                                  p.pImageName
+                                                   FROM product AS p where p.gender = 'Femme'
+                                                   LIMIT $start , $limit";
+                                         }
+                                         else if (!empty($_GET['prix'])){
+                                             if($_GET['prix'] == 'pbh')
+                                                 $query = " SELECT p.pId,
+                                                                   p.pName,
+                                                                   p.pAPrice,
+                                                                   p.pPPrice,
+                                                                   p.gender,
+                                                                   p.size,
+                                                                   p.pImageName
+                                                           FROM product AS p
+                                                           ORDER BY p.pAPrice
+                                                           LIMIT $start , $limit";
+                                             else
+                                                 $query = " SELECT p.pId,
+                                                                   p.pName,
+                                                                   p.pAPrice,
+                                                                   p.pPPrice,
+                                                                   p.gender,
+                                                                   p.size,
+                                                                   p.pImageName
+                                                           FROM product AS p
+                                                           ORDER BY p.pAPrice DESC
+                                                           LIMIT $start , $limit";
+                                         }
+                                         else{
+                                             $query = "SELECT p.pId,
+                                                              p.pName,
+                                                              p.pAPrice,
+                                                              p.pPPrice,
+                                                              p.gender,
+                                                              p.size,
+                                                              p.pImageName
+                                                       FROM product AS p 
+                                                       LIMIT $start , $limit";
+                                         }
+                                         if(isset($_POST['r_submit']))
+                                         {
+                                             $searchTerm = $_POST['searchBar'];
+                                             $query = "SELECT p.pId,
+                                                              p.pName,
+                                                              p.pAPrice,
+                                                              p.pPPrice,
+                                                              p.gender,
+                                                              p.size,
+                                                              p.pImageName
+                                                       FROM product AS p 
+                                                       Where p.pName LIKE '%".$searchTerm."%' LIMIT $start , $limit";
+                                         }
 
-                                     if(!empty($_GET['gender'])) {
-                                         if($_GET['gender'] == 'Homme')
-                                         $query = "SELECT
-                                                p.pId,
-                                                p.pName,
-                                                p.pAPrice,
-                                                p.pPPrice,
-                                                p.sexe,
-                                                p.pImageName
-                                               FROM product AS p where p.sexe = 'Homme'";
-                                         else
-                                             $query = "SELECT
-                                                p.pId,
-                                                p.pName,
-                                                p.pAPrice,
-                                                p.pPPrice,
-                                                p.sexe,
-                                                p.pImageName
-                                               FROM product AS p where p.sexe = 'Femme'";
-                                     }else{
-                                     $query = "SELECT
-                                                p.pId,
-                                                p.pName,
-                                                p.pAPrice,
-                                                p.pPPrice,
-                                                p.sexe,
-                                                p.pImageName
-                                               FROM product AS p 
-                                               LIMIT $start , $limit";
-                                     }
-                                     $result = mysqli_query($connexion, $query);
-                                     if ($result->num_rows > 0) {
-                                         while($row = mysqli_fetch_row($result)) {
-                                             $id = $row[0];
+                                         $connexion = OpenConnexion();
+                                         $result = mysqli_query($connexion, $query);
+                                         if ($result->num_rows > 0) {
+                                             while($row = mysqli_fetch_row($result)) {
+                                                 $id = $row[0];
                                      ?>
                                      <div class="col-lg-6 col-xl-4 col-sm-6 col-12">
                                          <div class="product-item">
                                              <div class="product">
                                                  <div class="thumb">
-                                                     <a href="single-product.php?id=<?php echo $row[0];?>">
-                                                         <img src="products/product-<?php echo $row[0]."/".$row[5];?>" alt="product img">
+                                                     <a href="product.php?id=<?php echo $row[0];?>">
+                                                         <img src="products/product-<?php echo $row[0]."/".$row[6];?>" alt="product img">
                                                      </a>
                                                      <div id="<?php echo $id;?>"  class="product_action">
                                                          <h4>
-                                                             <a href="single-product.php?id=<?php echo $row[0];?>"><?php echo $row[1];?></a>
+                                                             <a href="product.php?id=<?php echo $row[0];?>"><?php echo $row[1];?></a>
                                                          </h4>
                                                          <ul class="cart_action">
                                                              <li>
@@ -330,8 +369,8 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
                                                      <h5><?php echo $row[1];?></h5>
                                                  </a>
                                                  <div class="product-price">
-                                                     $<?php echo $row[2];?>
-                                                     <span>$<?php echo $row[3];?></span>
+                                                     €<?php echo $row[2];?>
+                                                     <span>€<?php echo $row[3];?></span>
                                                  </div>
                                              </div>
                                          </div>
@@ -352,15 +391,33 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
                                  CloseConnexion($connexion);
                              ?>
                              <ul class="pagination_style">
-                                 <?php if(!($Previous == 0))
-                                    print'<li><a href="shop.php?page='.$Previous.'" aria-label="Previous"><i class="ti-angle-left"></i></a></li>';
-                                 ?>
-                                 <?php for($i = 1; $i<= $pages; $i++):
-                                     if($i == $_GET['page']) print'<li><a class="active" href="shop.php?page='.$i.'">'.$i.'</a></li>';
-                                     else print'<li><a href="shop.php?page='.$i.'">'.$i.'</a></li>';
-                                 endfor; ?>
-                                 <?php if(!($Next > $pages))
-                                    print'<li> <a href="shop.php?page='.$Next.'" aria-label="Next"><i class="ti-angle-right"></i></a></li>';
+                                 <?php
+                                     $href = basename($_SERVER['REQUEST_URI']);
+                                     if(strpos($href, '&') > -1) {
+                                         $new_href = explode('&', $href);
+                                         $sufix = '&'.$new_href[1];
+
+                                         if (!($Previous == 0))
+                                             print'<li><a href="boutique.php?page=' . $Previous.$sufix .'" aria-label="Previous"><i class="ti-angle-left"></i></a></li>';
+
+                                         for ($i = 1; $i <= $pages; $i++):
+                                             if ($i == $_GET['page']) print'<li><a class="active" href="boutique.php?page=' . $i.$sufix . '">' . $i . '</a></li>';
+                                             else print'<li><a href="boutique.php?page=' . $i.$sufix . '">' . $i . '</a></li>';
+                                         endfor;
+                                         if (!($Next > $pages))
+                                             print'<li> <a href="boutique.php?page=' . $Next.$sufix . '" aria-label="Next"><i class="ti-angle-right"></i></a></li>';
+                                     }else{
+
+                                         if(!($Previous == 0))
+                                             print'<li><a href="boutique.php?page='.$Previous.'" aria-label="Previous"><i class="ti-angle-left"></i></a></li>';
+
+                                         for($i = 1; $i<= $pages; $i++):
+                                             if($i == $_GET['page']) print'<li><a class="active" href="boutique.php?page='.$i.'">'.$i.'</a></li>';
+                                             else print'<li><a href="boutique.php?page='.$i.'">'.$i.'</a></li>';
+                                         endfor;
+                                         if(!($Next > $pages))
+                                             print'<li> <a href="boutique.php?page='.$Next.'" aria-label="Next"><i class="ti-angle-right"></i></a></li>';
+                                     }
                                  ?>
                              </ul>
                          </div>
@@ -387,8 +444,6 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
                          <div class="footer-social">
                             <a href="#"><i class="fa fa-facebook"></i></a>
                             <a href="#"><i class="fa fa-instagram"></i></a>
-                            <a href="#"><i class="fa fa-twitter"></i></a>
-                            <a href="#"><i class="fa fa-pinterest"></i></a>
                          </div>
                       </div>
                    </div>
@@ -446,6 +501,19 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
              </div>
          </div>
 
+        <script>
+            function page_restrict(name, value)
+            {
+                var href = window.location.href;
+
+                if(href.indexOf("?") > -1)
+                    window.location.href = href + "&" + name + "=" + value;
+                if(href.indexOf("&") > -1)
+                    var  base_href = href.split("&");
+                window.location.href = base_href[0] + "&" + name + "=" + value;
+            }
+        </script>
+
          <!-- Scripts section
          ------------------------------------------- //-->
          <!-- Scripts for Product Quickview -->
@@ -458,8 +526,9 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
          <script src="js/bootstrap.min.js"></script>
          <script src="js/ion.rangeSlider.min.js"></script>
          <script src="js/product-slider.js"></script>
+         <script src="js/jquery-ui.js"></script>
 
-         <!-- ------------------------------------------- -->
+        <!-- ------------------------------------------- -->
          <script>
              $(".js-range-slider").ionRangeSlider({
                  grid: true,
@@ -471,17 +540,11 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
              });
          </script>
         <script>
-            function page_restrict(name, value)
-            {
-                var href = window.location.href;
-
-                    if(href.indexOf("?") > -1)
-                        window.location.href = href + "&" + name + "=" + value;
-                    if(href.indexOf("&") > -1)
-                        var  base_href = href.split("&");
-                        window.location.href = base_href[0] + "&" + name + "=" + value;
-            }
+            $(function() {
+                $( '#searchBar' ).autocomplete({
+                    source: 'search-assist.php',
+                });
+            });
         </script>
-         <!-- Nav bar backround -->
    </body>
 </html>
