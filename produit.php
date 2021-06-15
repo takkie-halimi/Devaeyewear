@@ -230,7 +230,9 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
                                      <div class="pi-price">
                                          <div class="product-price">
                                              €<?php echo $row[1];?>
-                                             <span>€<?php echo $row[2];?></span>
+                                             <?php if($row[2] != 0){?>
+                                                 <span>€<?php echo $row[2];?></span>
+                                             <?php }?>
                                          </div>
                                      </div>
                                  </div>

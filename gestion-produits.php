@@ -3,8 +3,6 @@
 require_once ('php/connexion.php');
 session_start();
 
-
-
 if(isset($_POST['a_submit'])) {
     $connexion = OpenConnexion();
     $query = "SELECT pId FROM product ORDER BY pId DESC LIMIT 1";
@@ -18,7 +16,7 @@ if(isset($_POST['a_submit'])) {
     $sub_dir = "product-".$id;
     $main_dir = "products/".$sub_dir."/";
 
-    if(!empty($_POST['product_name']) && !empty($_POST['p_price']) && !empty($_POST['a_price']) && !empty($_POST['sexe'])) {
+    if(!empty($_POST['product_name']) && !empty($_POST['p_price']) && !empty($_POST['a_price']) && !empty($_POST['sexe']) && !empty($_POST['i_size'])) {
 
         if($_FILES['indexImage']['size'] != 0 && $_FILES['images']['size'] != 0) {
             if (is_dir("products/" . $sub_dir) === false)
@@ -49,21 +47,21 @@ if(isset($_POST['a_submit'])) {
                 move_uploaded_file($_FILES['images']['tmp_name'][2], $main_dir . $imagesNames[2]);
                 move_uploaded_file($_FILES['images']['tmp_name'][3], $main_dir . $imagesNames[3]);
             }
-            CloseConnexion($connexion);
 
-            $connexion = OpenConnexion();
             $query = "INSERT INTO product(
-                       pId,
-                       pName,
-                       pPPrice,
-                       PAPrice,
-                       sexe,
-                       pImageName)
+                           pId,
+                           pName,
+                           pPPrice,
+                           PAPrice,
+                           gender,
+                           size,
+                           pImageName)
                        VALUES('$id',
                              '".$_POST['product_name']."',
                              '".$_POST['p_price']."',
                              '".$_POST['a_price']."',
                              '".$_POST['sexe']."',
+                             '".$_POST['i_size']."',
                              '$indexFileName')";
             $result = mysqli_query($connexion, $query);
             if (!$result) echo $connexion->error;
@@ -76,19 +74,21 @@ if(isset($_POST['a_submit'])) {
 if(isset($_POST['u_submit'])) {
 
     $id = $_GET['id'];
-    if(isset($_POST['uproduct_name']) || isset($_POST['up_price']) || isset($_POST['ua_price']) || isset($_POST['usexe'])) {
+    if(isset($_POST['uproduct_name']) || isset($_POST['up_price']) || isset($_POST['ua_price']) || isset($_POST['usexe']) || isset($_POST['u_size'])) {
 
         $product_name = $_POST['uproduct_name'];
         $p_price = $_POST['up_price'];
         $a_price = $_POST['ua_price'];
-        $sexe = $_POST['usexe'];
+        $gender = $_POST['usexe'];
+        $size = $_POST['u_size'];
 
         $connexion = OpenConnexion();
         $query = "UPDATE product SET 
                        pName='$product_name',
                        pPPrice='$p_price',
                        pAPrice='$a_price',
-                       sexe='$sexe'
+                       gender='$gender',
+                       size='$size'
                   WHERE pId ='$id'";
         mysqli_query($connexion, $query);
         CloseConnexion($connexion);
@@ -235,19 +235,24 @@ if(isset($_POST['d_submit'])) {
                                      <input type="text" name="a_price" id="a_price">
                                  </div>
                                  <div class="input__box">
-                                     <h5>Sélectionnez le sexe (*)</h5>
+                                     <h5>Taille (*)</h5>
+                                     <input type="text" name="i_size" id="i_size">
+                                 </div>
+                                 <div class="input__box">
+                                     <h5>Sélectionnez Le Genre  (*)</h5>
                                      <select name="sexe" id="sexe" class="custom-select">
                                          <option selected>-</option>
                                          <option value="Homme">Homme</option>
                                          <option value="Femme">Femme</option>
+                                         <option value="Mix">Mix [Homme & Femme]</option>
                                      </select>
                                  </div>
                                  <br><br>
                                  <h4>Sélectionnez les images pour le téléchargement:</h4>
-                                 <span>Sélectionner l'image index:</span><br>
+                                 <span>Sélectionner L'image Index:</span><br>
                                  <input  type="file" name="indexImage" id="indexImage" oninput="pic.src=window.URL.createObjectURL(this.files[0])"><br>
                                  <div class="image-preview"><img id="pic" src="#" alt="image index"/></div><br>
-                                 Sélectionnez les compléments:<br>
+                                 Sélectionnez Les Compléments:<br>
                                  <input  type="file" name="images[]" id="images" multiple>
                                  <div class="gallery"></div>
                                  <input class="valid_btn" type="submit" id="a_submit" name="a_submit" value="Ajouter un Produit">
@@ -287,7 +292,8 @@ if(isset($_POST['d_submit'])) {
                                                     p.pName,
                                                     p.pPPrice,
                                                     p.pAPrice,
-                                                    p.sexe,
+                                                    p.gender,
+                                                    p.size,
                                                     p.pImageName,
                                                     pi.p_img1,
                                                     pi.p_img2,
@@ -299,7 +305,6 @@ if(isset($_POST['d_submit'])) {
                                      $row = mysqli_fetch_row($result);
                                      if($sub_dir != "product-"){
                                  ?>
-
                                  <div class="input__box">
                                      <h5>Nom de Produit (*)</h5>
                                      <input type="text" name="uproduct_name" id="uproduct_name" value="<?php echo $row[0]?>" required>
@@ -313,6 +318,10 @@ if(isset($_POST['d_submit'])) {
                                      <input type="text" name="ua_price" id="ua_price" value="<?php echo $row[2]?>"required>
                                  </div>
                                  <div class="input__box">
+                                     <h5>size (*)</h5>
+                                     <input type="text" name="u_size" id="u_size" value="<?php echo $row[4]?>"required>
+                                 </div>
+                                 <div class="input__box">
                                      <h5>Sélectionnez le sexe (*)</h5>
                                      <select name="usexe" id="usexe" class="custom-select">
                                          <option>-</option>
@@ -320,8 +329,14 @@ if(isset($_POST['d_submit'])) {
                                              if($row[3] == "Homme"){
                                                 print'<option value="'.$row[3].'" selected>'.$row[3].'</option>';
                                                 print'<option value="Femme">Femme</option>';
+                                                print'<option value="Mix">Mix [Homme & Femme]</option>';
+                                             }else if($row[3] == "Femme"){
+                                                 print'<option value="Homme">Homme</option>';
+                                                 print'<option value="'.$row[3].'" selected>'.$row[3].'</option>';
+                                                 print'<option value="Mix">Mix [Homme & Femme]</option>';
                                              }else{
                                                  print'<option value="Homme">Homme</option>';
+                                                 print'<option value="Femme">Femme</option>';
                                                  print'<option value="'.$row[3].'" selected>'.$row[3].'</option>';
                                              }
                                          ?>
@@ -330,13 +345,13 @@ if(isset($_POST['d_submit'])) {
                                  <br><br>
                                  <h4>Representation des images de produit:</h4>
                                  <span>L'image index:</span><br>
-                                 <div class="image-preview"><img id="pic" src="products/<?php echo $sub_dir."/".$row[4];?>" alt="image index"/></div><br>
+                                 <div class="image-preview"><img id="pic" src="products/<?php echo $sub_dir."/".$row[5];?>" alt="image index"/></div><br>
                                  Les images complémentaires:<br>
                                  <div class="gallery">
-                                     <img src="products/<?php echo $sub_dir."/".$row[5];?>">
                                      <img src="products/<?php echo $sub_dir."/".$row[6];?>">
                                      <img src="products/<?php echo $sub_dir."/".$row[7];?>">
                                      <img src="products/<?php echo $sub_dir."/".$row[8];?>">
+                                     <img src="products/<?php echo $sub_dir."/".$row[9];?>">
                                  </div><br>
                                  <input class="valid_btn" type="submit" id="u_submit" name="u_submit" value="Valider">
                                  <?php } CloseConnexion($connexion);?>
@@ -372,36 +387,53 @@ if(isset($_POST['d_submit'])) {
                                  $id = $_GET['id'];
                                  $sub_dir = "product-".$id."";
                                  $connexion = OpenConnexion();
-                                 $query = "SELECT
-                                                    p.pName,
-                                                    p.pPPrice,
-                                                    p.pAPrice,
-                                                    p.sexe,
-                                                    p.pImageName,
-                                                    pi.p_img1,
-                                                    pi.p_img2,
-                                                    pi.p_img3,
-                                                    pi.p_img4
+                                 $query = "SELECT p.pName,
+                                                  p.pPPrice,
+                                                  p.pAPrice,
+                                                  p.gender,
+                                                  p.size,
+                                                  p.pImageName,
+                                                  pi.p_img1,
+                                                  pi.p_img2,
+                                                  pi.p_img3,
+                                                  pi.p_img4
                                                 FROM product as p LEFT JOIN product_images pi on pi.pImageName = p.pImageName
                                                 WHERE p.pId ='$id'";
                                  $result = mysqli_query($connexion, $query);
                                  $row = mysqli_fetch_row($result);
 
                                  if($sub_dir != "product-"){?>
-                                 <div class="input__box"><h5>Nom de Produit : <?php print $row[0];?></h5></div>
-                                 <div class="input__box"><h5>Prix Précédent : $<?php echo $row[1];?></h5></div>
-                                 <div class="input__box"><h5>Prix Actuel : $<?php echo $row[2];?></h5></div>
-                                 <div class="input__box"><h5>Ce Produit Orienté pour : <?php echo $row[3];?></h5></div>
+                                 <br>
+                                 <table class="table">
+                                     <thead class="thead-dark">
+                                     <tr>
+                                         <th scope="col">Nom de Produit</th>
+                                         <th scope="col">Prix Précédent</th>
+                                         <th scope="col">Prix Actuel </th>
+                                         <th scope="col">Genre</th>
+                                         <th scope="col">Taille</th>
+                                     </tr>
+                                     </thead>
+                                     <tbody>
+                                     <tr>
+                                         <th scope="row"><?php print $row[0];?></th>
+                                         <td>€<?php echo $row[1];?></td>
+                                         <td>€<?php echo $row[2];?></td>
+                                         <td><?php echo $row[3];?></td>
+                                         <td><?php echo $row[4];?></td>
+                                     </tr>
+                                     </tbody>
+                                 </table>
                                  <br><br>
                                  <h4>Representation des Images de Produit:</h4>
                                  <span>L'image index:</span><br>
-                                 <div class="image-preview"><img id="pic" src="products/<?php echo $sub_dir."/".$row[4];?>" alt="image index"/></div><br>
+                                 <div class="image-preview"><img id="pic" src="products/<?php echo $sub_dir."/".$row[5];?>" alt="image index"/></div><br>
                                  Les Images Complémentaires:<br>
                                  <div class="gallery">
-                                     <img src="products/<?php echo $sub_dir."/".$row[5];?>">
                                      <img src="products/<?php echo $sub_dir."/".$row[6];?>">
                                      <img src="products/<?php echo $sub_dir."/".$row[7];?>">
                                      <img src="products/<?php echo $sub_dir."/".$row[8];?>">
+                                     <img src="products/<?php echo $sub_dir."/".$row[9];?>">
                                  </div><br>
                                  <input class="valid_btn" type="submit" name="d_submit" id="d_submit" value="Supprimer">
                                  <?php }?>

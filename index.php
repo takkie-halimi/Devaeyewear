@@ -137,41 +137,6 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
             </div>
          </nav>
 
-        <!-- 2<div class="carousel slide" data-ride="carousel" id="carouselExampleIndicators">
-             <ol class="carousel-indicators">
-                 <li class="active" data-slide-to="0" data-target="#carouselExampleIndicators"></li>
-                 <li data-slide-to="1" data-target="#carouselExampleIndicators"></li>
-                 <li data-slide-to="2" data-target="#carouselExampleIndicators"></li>
-             </ol>
-             <div class="carousel-inner">
-                 <div class="carousel-item active">
-                     <img alt="First slide" class="d-block w-100" src="images/carousel-slider/b5.jpg">
-                     <div class="carousel-caption d-none d-md-block">
-                         <h5 class="animated bounceInRight" style="animation-delay: 1s">Web Development</h5>
-                         <p class="animated bounceInLeft" style="animation-delay: 2s">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Maxime, nulla, tempore. Deserunt excepturi quas vero.</p>
-                         <p class="animated bounceInRight" style="animation-delay: 3s"><a href="#">More Info</a></p>
-                     </div>
-                 </div>
-                 <div class="carousel-item">
-                     <img alt="Second slide" class="d-block w-100" src="images/carousel-slider/b3.png">
-                     <div class="carousel-caption d-none d-md-block">
-                         <h5 class="animated slideInDown" style="animation-delay: 1s">web design</h5>
-                         <p class="animated fadeInUp" style="animation-delay: 2s">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Maxime, nulla, tempore. Deserunt excepturi quas vero.</p>
-                         <p class="animated zoomIn" style="animation-delay: 3s"><a href="#">More Info</a></p>
-                     </div>
-                 </div>
-                 <div class="carousel-item">
-                     <img alt="Third slide" class="d-block w-100" src="images/carousel-slider/b4.jpg">
-                     <div class="carousel-caption d-none d-md-block">
-                         <h5 class="animated zoomIn" style="animation-delay: 1s">Digital Marketing</h5>
-                         <p class="animated fadeInLeft" style="animation-delay: 2s">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Maxime, nulla, tempore. Deserunt excepturi quas vero.</p>
-                         <p class="animated zoomIn" style="animation-delay: 3s"><a href="#">More Info</a></p>
-                     </div>
-                 </div>
-             </div><a class="carousel-control-prev" data-slide="prev" href="#carouselExampleIndicators" role="button"><span aria-hidden="true" class="carousel-control-prev-icon"></span> <span class="sr-only">Previous</span></a> <a class="carousel-control-next" data-slide="next" href="#carouselExampleIndicators" role="button"><span aria-hidden="true" class="carousel-control-next-icon"></span> <span class="sr-only">Next</span></a>
-         </div> -->
-         <!-- Slide section -->
-
         <div class="carousel slide" data-ride="carousel" id="carouselExampleIndicators">
             <ol class="carousel-indicators">
                <li class="active" data-slide-to="0" data-target="#carouselExampleIndicators"></li>
@@ -235,7 +200,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
                      </div>
                      <div class="col-lg-8 offset-lg-1">
                          <div class="col-sm-12 text-center wow fadeInUp">
-                             <h2 class="shadow p-3 mb-5 bg-white" style="text-shadow: 0 0 3px #FF0000, 0 0 5px #0000FF; border-radius: 10px;">LUNETTES POUR FEMME</h2>
+                             <h2>LUNETTES POUR FEMME</h2>
                          </div>
                          <?php
                          $connexion = OpenConnexion();
@@ -288,7 +253,9 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
                                              </a>
                                              <div class="product-price">
                                                  €<?php echo $row[2];?>
-                                                 <span>€<?php echo $row[3];?></span>
+                                                 <?php if($row[3] != 0){?>
+                                                     <span>€<?php echo $row[3];?></span>
+                                                 <?php }?>
                                              </div>
                                          </div>
                                      </div>
@@ -310,7 +277,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
              <div class="container bg-light">
                  <div class="row">
                      <div class="col-sm-12 text-center wow fadeInUp">
-                         <h2 class="shadow-sm p-3 mb-5 bg-white" style="text-shadow: 2px 2px 5px red; border-radius: 50%;">DERNIÈRES LUNETTES</h2>
+                         <h2>DERNIÈRES LUNETTES</h2>
                      </div>
                      <div class="col-md-12 px-4 pt-0">
                          <div class="owl-carousel carousel_se_02_carousel owl-theme">
@@ -383,7 +350,9 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
                                              </a>
                                              <div class="product-price">
                                                  €<?php echo $row[2];?>
-                                                 <span>€<?php echo $row[3];?></span>
+                                                 <?php if($row[3] != 0){?>
+                                                     <span>€<?php echo $row[3];?></span>
+                                                 <?php }?>
                                              </div>
                                          </div>
                                      </div>
@@ -405,7 +374,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
                  <div class="row">
                      <div class="col-lg-8">
                          <div class="col-sm-12 text-center wow fadeInUp">
-                             <h2 class="shadow p-3 mb-5 bg-white" style="text-shadow: 1px 1px 2px black, 0 0 25px blue, 0 0 5px darkblue; border-radius: 50%;">LUNETTES POUR HOMMES</h2>
+                             <h2>LUNETTES POUR HOMMES</h2>
                          </div>
                          <?php
                          $connexion = OpenConnexion();
@@ -458,7 +427,9 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
                                      </a>
                                      <div class="product-price">
                                          €<?php echo $row[2];?>
-                                         <span>€<?php echo $row[3];?></span>
+                                         <?php if($row[3] != 0){?>
+                                             <span>€<?php echo $row[3];?></span>
+                                         <?php }?>
                                      </div>
                                  </div>
                              </div>

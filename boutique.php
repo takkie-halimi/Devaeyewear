@@ -202,14 +202,16 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
                                      <?php
                                          $connexion = OpenConnexion();
                                          $query = "SELECT COUNT(DISTINCT pId) gender_count,
-                                                       COUNT(DISTINCT CASE WHEN gender = 'Homme'   THEN pId END) male_count,
-                                                       COUNT(DISTINCT CASE WHEN gender = 'Femme' THEN pId END) female_count
-                                                   FROM product";
+                                                          COUNT(DISTINCT CASE WHEN gender = 'Homme'   THEN pId END) male_count,
+                                                          COUNT(DISTINCT CASE WHEN gender = 'Femme' THEN pId END) female_count,
+                                                          COUNT(DISTINCT CASE WHEN gender = 'Mix' THEN pId END) mix_count
+                                                    FROM product";
                                          $result = mysqli_query($connexion, $query);
                                          $row = mysqli_fetch_row($result);
                                      ?>
-                                     <li><a>Homme <span>(<?php echo $row[1]?>)</span></a></li>
-                                     <li><a>Femme <span>(<?php echo $row[2]?>)</span></a></li>
+                                     <li><a>Homme<span>(<?php echo $row[1]?>)</span></a></li>
+                                     <li><a>Femme<span>(<?php echo $row[2]?>)</span></a></li>
+                                     <li><a>Mix [Homme & Femme]<span>(<?php echo $row[3]?>)</span></a></li>
                                      <li><a>Tous <span>(<?php echo $row[0]?>)</span></a></li>
                                  </ul>
                                  <?php  CloseConnexion($connexion);?>
@@ -248,10 +250,12 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
                                  <div class="shop-found-selector">
                                      <p>Affichage des résultats 1–10 sur 12</p>
                                          <select name="zoneSelect">
-                                             <option onclick="page_restrict('gender','Homme')">Trier par : Homme</option>
-                                             <option onclick="page_restrict('gender','Femme')">Trier par : Femme</option>
-                                             <option onclick="page_restrict('prix','pbh')">Trier par prix : de bas en haut</option>
-                                             <option onclick="page_restrict('prix','phb')">Trier par prix : de haut en bas</option>
+                                             <option onclick="page_restrict('genre','Tous')">Trier par : Tous</option>
+                                             <option onclick="page_restrict('genre','Homme')">Trier par : Homme</option>
+                                             <option onclick="page_restrict('genre','Femme')">Trier par : Femme</option>
+                                             <option onclick="page_restrict('genre','Mix')">Trier par : (MIX) Homme & Femme</option>
+                                             <option onclick="page_restrict('prix','pbh')">Trier par prix : De Bas en Haut</option>
+                                             <option onclick="page_restrict('prix','phb')">Trier par prix : De Haut en Bas</option>
                                          </select>
                                  </div>
                              </div>
@@ -271,7 +275,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
                                                                   p.pImageName
                                                        FROM product AS p where p.gender = 'Homme'
                                                        LIMIT $start , $limit";
-                                             else
+                                             else if($_GET['gender'] == 'Femme') {
                                                  $query = "SELECT p.pId,
                                                                   p.pName,
                                                                   p.pAPrice,
@@ -281,6 +285,28 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
                                                                   p.pImageName
                                                    FROM product AS p where p.gender = 'Femme'
                                                    LIMIT $start , $limit";
+                                             }
+                                             else if($_GET['gender'] == 'Mix') {
+                                                 $query = "SELECT p.pId,
+                                                                  p.pName,
+                                                                  p.pAPrice,
+                                                                  p.pPPrice,
+                                                                  p.gender,
+                                                                  p.size,
+                                                                  p.pImageName
+                                                           FROM product AS p where p.gender = 'Mix'
+                                                           LIMIT $start , $limit";
+                                             }else {
+                                                 $query = "SELECT p.pId,
+                                                                  p.pName,
+                                                                  p.pAPrice,
+                                                                  p.pPPrice,
+                                                                  p.gender,
+                                                                  p.size,
+                                                                  p.pImageName
+                                                           FROM product AS p 
+                                                           LIMIT $start , $limit";
+                                             }
                                          }
                                          else if (!empty($_GET['prix'])){
                                              if($_GET['prix'] == 'pbh')
@@ -341,12 +367,12 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
                                          <div class="product-item">
                                              <div class="product">
                                                  <div class="thumb">
-                                                     <a href="product.php?id=<?php echo $row[0];?>">
+                                                     <a href="produit.php?id=<?php echo $row[0];?>">
                                                          <img src="products/product-<?php echo $row[0]."/".$row[6];?>" alt="product img">
                                                      </a>
                                                      <div id="<?php echo $id;?>"  class="product_action">
                                                          <h4>
-                                                             <a href="product.php?id=<?php echo $row[0];?>"><?php echo $row[1];?></a>
+                                                             <a href="produit.php?id=<?php echo $row[0];?>"><?php echo $row[1];?></a>
                                                          </h4>
                                                          <ul class="cart_action">
                                                              <li>
@@ -370,9 +396,27 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
                                                  </a>
                                                  <div class="product-price">
                                                      €<?php echo $row[2];?>
+                                                     <?php if($row[3] != 0){?>
                                                      <span>€<?php echo $row[3];?></span>
+                                                     <?php }?>
                                                  </div>
                                              </div>
+
+                                             <!-- <div class="pi-text">
+                                                 <a href="#">
+                                                     <h5><?php echo $row[1];?></h5>
+                                                 </a>
+                                                 <div class="catagory-name" style="background: black;
+                                                                              color: white;
+                                                                              padding: 2px;
+                                                                              box-shadow: 5px 5px 2px 1px rgba(0, 0, 255, .2);">
+                                                      <?php echo $row[4];?>
+                                                  </div>
+                                                 <div class="product-price">
+                                                     €<?php echo $row[2];?>
+                                                     <span>€<?php echo $row[3];?></span>
+                                                 </div>
+                                             </div> -->
                                          </div>
                                      </div>
                                      <?php

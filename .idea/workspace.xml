@@ -6,127 +6,22 @@
   <component name="ChangeListManager">
     <list default="true" id="a2bb3d95-641c-495f-b49e-015efe557672" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/contact.php" beforeDir="false" afterPath="$PROJECT_DIR$/contact.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/style.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/boutique.php" beforeDir="false" afterPath="$PROJECT_DIR$/boutique.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/gestion-produits.php" beforeDir="false" afterPath="$PROJECT_DIR$/gestion-produits.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/products/big-img.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/products/list1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/products/list2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/products/list3.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/products/list4.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/products/list5.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/products/list6.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/products/list7.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/products/list8.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/products/list9.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/products/product 1/big-img.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/products/product 1/list1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/products/product 1/list2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/products/product 1/list3.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/products/product 1/list4.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/products/product 1/list5.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/products/product 1/list6.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/products/product 1/list7.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/products/product 1/list8.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/products/product 1/list9.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/products/product 1/product-1.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/products/product 1/product-10.jpg" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/images/products/product 1/product-11.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/products/product 1/product-12.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/products/product 1/product-13.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/products/product 1/product-2.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/products/product 1/product-3.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/products/product 1/product-4.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/products/product 1/product-5.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/products/product 1/product-6.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/products/product 1/product-7.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/products/product 1/product-8.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/products/product 1/product-9.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/products/product 1/sm1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/products/product 1/sm2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/products/product 1/sm3.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/products/product 2/big-img.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/products/product 2/list1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/products/product 2/list2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/products/product 2/list3.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/products/product 2/list4.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/products/product 2/list5.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/products/product 2/list6.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/products/product 2/list7.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/products/product 2/list8.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/products/product 2/list9.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/products/product 2/product-1.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/products/product 2/product-10.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/products/product 2/product-11.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/products/product 2/product-12.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/products/product 2/product-13.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/products/product 2/product-2.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/products/product 2/product-3.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/products/product 2/product-4.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/products/product 2/product-5.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/products/product 2/product-6.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/products/product 2/product-7.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/products/product 2/product-8.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/products/product 2/product-9.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/products/product 2/sm1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/products/product 2/sm2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/products/product 2/sm3.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/products/product 3/big-img.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/products/product 3/list1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/products/product 3/list2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/products/product 3/list3.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/products/product 3/list4.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/products/product 3/list5.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/products/product 3/list6.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/products/product 3/list7.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/products/product 3/list8.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/products/product 3/list9.png" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/images/products/product 3/product-1.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/products/product 3/product-10.jpg" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/images/products/product 3/product-11.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/products/product 3/product-12.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/products/product 3/product-13.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/products/product 3/product-2.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/products/product 3/product-3.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/products/product 3/product-4.jpg" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/images/products/product 3/product-5.jpg" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/images/products/product 3/product-6.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/products/product 3/product-7.jpg" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/images/products/product 3/product-8.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/products/product 3/product-9.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/products/product 3/sm1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/products/product 3/sm2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/products/product 3/sm3.png" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/images/products/product-1.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/products/product-10.jpg" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/images/products/product-11.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/products/product-12.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/products/product-13.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/products/product-2.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/products/product-3.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/products/product-4.jpg" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/images/products/product-5.jpg" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/images/products/product-6.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/products/product-7.jpg" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/images/products/product-8.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/products/product-9.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/products/sm1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/products/sm2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/products/sm3.png" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/index.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/products/product-11/index-11.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/products/product-11/index-11.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/products/product-11/product-1.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/products/product-11/product-1.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/products/product-11/product-2.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/products/product-11/product-2.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/products/product-11/product-3.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/products/product-11/product-3.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/products/product-11/product-4.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/products/product-11/product-4.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/products/product-12/index-12.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/products/product-12/index-12.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/products/product-12/product-1.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/products/product-12/product-1.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/products/product-12/product-2.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/products/product-12/product-2.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/products/product-12/product-3.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/products/product-12/product-3.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/products/product-12/product-4.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/products/product-12/product-4.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/produit.php" beforeDir="false" afterPath="$PROJECT_DIR$/produit.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/quick-view.php" beforeDir="false" afterPath="$PROJECT_DIR$/quick-view.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/shop.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/single-product.php" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -223,7 +118,11 @@
       <workItem from="1623202087169" duration="7563000" />
       <workItem from="1623299835991" duration="130000" />
       <workItem from="1623300133884" duration="77000" />
-      <workItem from="1623458862094" duration="14030000" />
+      <workItem from="1623458862094" duration="14757000" />
+      <workItem from="1623550530120" duration="3885000" />
+      <workItem from="1623604357023" duration="592000" />
+      <workItem from="1623635558795" duration="2962000" />
+      <workItem from="1623706858401" duration="9435000" />
     </task>
     <servers />
   </component>
