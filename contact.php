@@ -8,7 +8,7 @@ session_start();
 $username = $_POST['username'];
 $password = $_POST['password'];
 $error = "";
-
+$message = "";
 
 if($_SERVER["REQUEST_METHOD"] == "POST") {
     $connexion = OpenConnexion();
@@ -31,6 +31,19 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
     }
     CloseConnexion($connexion);
 }
+
+
+if (isset($_POST['mail_submit'])) {
+    $email_Reciver = "jasper@jasper"; //email inbox address for reciving the emails
+    $full_Name = $_POST['p_name'];
+    $email_Sender = $_POST['mail'];
+    $subject = " Message Recieved From - ".$_POST['p_name'];
+    $msg = $_POST['message'];
+    $headers = "From: " . $email_Sender;
+    mail($email_Reciver, $subject, $msg, $headers);
+    $message = "Votre message est arrivé avec succès,<br> Nous examinerons votre message bientôt.";
+}
+
 ?>
 <!DOCTYPE HTML>
    <head>
@@ -84,9 +97,6 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
                      </button>
                      <button type="button" class="btn btn-social-icon btn-instagram btn-rounded">
                         <i class="fa fa-instagram"></i>
-                     </button>
-                     <button type="button" class="btn btn-social-icon btn-youtube btn-rounded">
-                        <i class="fa fa-youtube-play"></i>
                      </button>
                   </div>
                </div>
@@ -166,7 +176,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
                                  classical Latin literature from 45 BC, maki years old.</p>
                          </div>
                          <div class="contact-widget">
-                             <div class="cw-item">
+                             <!--<div class="cw-item">
                                  <div class="ci-icon">
                                      <i class="ti-location-pin"></i>
                                  </div>
@@ -183,16 +193,24 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
                                      <span>Téléphoner:</span>
                                      <p>+65 11.188.888</p>
                                  </div>
-                             </div>
+                             </div>-->
                              <div class="cw-item">
                                  <div class="ci-icon">
                                      <i class="ti-email"></i>
                                  </div>
                                  <div class="ci-text">
                                      <span>Email:</span>
-                                     <p>hellocolorlib@gmail.com</p>
+                                     <p>bensalahnoufel@gmail.com</p>
                                  </div>
                              </div>
+                             <?php if($message != ""){?>
+                             <div class="cw-item">
+                                 <div class="ci-text">
+                                     <?php if($message != "")?>
+                                     <p><?php echo $message?></p>
+                                 </div>
+                             </div>
+                             <?php }?>
                          </div>
                      </div>
                      <div class="col-lg-6 offset-lg-1">
@@ -200,17 +218,17 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
                              <div class="leave-comment">
                                  <h4>Laissez un commentaire</h4>
                                  <p>Notre personnel vous rappellera plus tard et répondra à vos questions. </p>
-                                 <form action="#" class="comment-form">
+                                 <form action="" method="POST" class="comment-form">
                                      <div class="row">
                                          <div class="col-lg-6">
-                                             <input type="text" placeholder="Votre nom">
+                                             <input type="text" name="p_name" placeholder="Votre nom">
                                          </div>
                                          <div class="col-lg-6">
-                                             <input type="text" placeholder="Votre email">
+                                             <input type="text" name="mail" placeholder="Votre email">
                                          </div>
                                          <div class="col-lg-12">
-                                             <textarea placeholder="Votre message"></textarea>
-                                             <button type="submit" class="site-btn">Envoyer le message</button>
+                                             <textarea name="message" placeholder="Votre message"></textarea>
+                                             <button type="submit" name="mail_submit" class="site-btn">Envoyer le message</button>
                                          </div>
                                      </div>
                                  </form>
@@ -234,9 +252,9 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
                          </div>
                          <ul>
                              <ul>
-                                 <li><i class="ti-location-pin"> 60-49 Road 11378 New York</i></li>
-                                 <li><i class="ti-mobile"> +65 11.188.888</i></li>
-                                 <li><i class="ti-email"> hellocolorlib@gmail.com</i></li>
+                                 <!-- <li><i class="ti-location-pin"> 60-49 Road 11378 New York</i></li>
+                                 <li><i class="ti-mobile"> +65 11.188.888</i></li>-->
+                                 <li><i class="ti-email"> bensalahnoufel@gmail.com</i></li>
                              </ul>
                          </ul>
                          <div class="footer-social">
@@ -251,7 +269,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
                     <div class="col-lg-5">
                         <div class="newslatter-item">
                             <h5>Rejoignez notre newsletter maintenant</h5>
-                            <p>Recevez des mises à jour par e-mail sur notre dernière boutique et nos offres spéciales.</p>
+                            <p>Recevez des mises à jour par e-mail sur notre dernière boutique.</p>
                             <form action="#" class="subscribe-form">
                                 <input type="text" placeholder="Entrez votre e-mail ">
                                 <button type="button">S'abonner</button>

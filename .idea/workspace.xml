@@ -6,8 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="a2bb3d95-641c-495f-b49e-015efe557672" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/boutique.php" beforeDir="false" afterPath="$PROJECT_DIR$/boutique.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gestion-produits.php" beforeDir="false" afterPath="$PROJECT_DIR$/gestion-produits.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/contact.php" beforeDir="false" afterPath="$PROJECT_DIR$/contact.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/style.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/images/products/product 1/product-11.jpg" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/images/products/product 3/product-1.jpg" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/images/products/product 3/product-11.jpg" beforeDir="false" />
@@ -61,8 +61,8 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="database.data.extractors.current.export.id" value="SQL Inserts" />
-    <property name="database.data.extractors.current.id" value="SQL Inserts" />
+    <property name="database.data.extractors.current.export.id" value="Comma-separated (CSV)_id" />
+    <property name="database.data.extractors.current.id" value="Comma-separated (CSV)_id" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../DevaEyeWear1/index.php" />
     <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
     <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
@@ -123,6 +123,10 @@
       <workItem from="1623604357023" duration="592000" />
       <workItem from="1623635558795" duration="2962000" />
       <workItem from="1623706858401" duration="9435000" />
+      <workItem from="1623805766130" duration="1324000" />
+      <workItem from="1623807882269" duration="8050000" />
+      <workItem from="1623827671103" duration="1387000" />
+      <workItem from="1623879612782" duration="11493000" />
     </task>
     <servers />
   </component>

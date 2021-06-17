@@ -200,7 +200,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
                      </div>
                      <div class="col-lg-8 offset-lg-1">
                          <div class="col-sm-12 text-center wow fadeInUp">
-                             <h2>LUNETTES POUR FEMME</h2>
+                             <h2 style="font-family: 'Konnect';">LUNETTES POUR FEMME</h2>
                          </div>
                          <?php
                          $connexion = OpenConnexion();
@@ -277,17 +277,16 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
              <div class="container bg-light">
                  <div class="row">
                      <div class="col-sm-12 text-center wow fadeInUp">
-                         <h2>DERNIÈRES LUNETTES</h2>
+                         <h2 style="font-family: 'Konnect';" >DERNIÈRES LUNETTES</h2>
                      </div>
                      <div class="col-md-12 px-4 pt-0">
                          <div class="owl-carousel carousel_se_02_carousel owl-theme">
                              <?php
                                  $connexion = OpenConnexion();
-                                 $miniQuery = "SELECT p.pId FROM product AS p ORDER BY p.pId DESC LIMIT 2";
+                                 $miniQuery = "SELECT p.pId FROM product AS p ORDER BY p.pId DESC LIMIT 1";
                                  $result = mysqli_query($connexion, $miniQuery);
                                  $row = mysqli_fetch_row($result);
                                  $lastProduct = $row[0];
-                                 $beforeLastProduct = $row[1];
                                  $query = "SELECT
                                             p.pId,
                                             p.pName,
@@ -314,7 +313,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
                                                          <img src="products/product-<?php echo $row[0]."/".$row[6];?>" alt="product img">
                                                          <span class="spanProduct">Nouveau</span>
                                                      </a>
-                                                 <?php }else if($row[0] == $beforeLastProduct){ ?>
+                                                 <?php }else if($row[0] == $lastProduct - 1){ ?>
                                                      <a href="produit.php?id=<?php echo $row[0];?>">
                                                          <img src="products/product-<?php echo $row[0]."/".$row[6];?>" alt="product img">
                                                          <span class="spanProduct">Nouveau</span>
@@ -374,7 +373,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
                  <div class="row">
                      <div class="col-lg-8">
                          <div class="col-sm-12 text-center wow fadeInUp">
-                             <h2>LUNETTES POUR HOMMES</h2>
+                             <h2 style="font-family: 'Konnect';">LUNETTES POUR HOMMES</h2>
                          </div>
                          <?php
                          $connexion = OpenConnexion();

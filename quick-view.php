@@ -113,19 +113,35 @@ require_once('php/connexion.php');
                 <div class="product-details-size">
                     <span>Taille :</span>
                     <ul>
-                        <li><?php echo $ref[0].' <i class="fa fa-square-o" aria-hidden="true"></i> '.$ref[1]?></li>
+                        <li><?php echo $ref[0].' <i class="fa fa-square-o" aria-hidden="true"></i> '.$ref[1]." - ".$ref[2]?> <img src="images/bar.png" style="height: 20px; width: 50px;"></li>
                     </ul>
                 </div>
                 <div class="product-details-categories">
                     <span>Categories :</span>
                     <ul>
+                        <?php if($row[3] == "Mix"){?>
                         <li><a style="background: black;
                                       color: white;
                                       padding: 2px;
-                                      box-shadow: 5px 5px 2px 1px rgba(0, 0, 255, .2);">
-                                <?php echo $row[3];?>
-                            </a>
+                                      box-shadow: 5px 5px 2px 1px rgba(0, 0, 255, .2);"><?php echo $row[3];?></a>&nbsp;
+                            <a style="background: black;
+                                      color: white;
+                                      padding: 2px;
+                                      box-shadow: 5px 5px 2px 1px rgba(0, 0, 255, .2);">Homme</a>&nbsp;
+                            <a style="background: black;
+                                      color: white;
+                                      padding: 2px;
+                                      box-shadow: 5px 5px 2px 1px rgba(0, 0, 255, .2);">Femme</a>
                         </li>
+                        <?php }else{?>
+                            <li><a style="background: black;
+                                      color: white;
+                                      padding: 2px;
+                                      box-shadow: 5px 5px 2px 1px rgba(0, 0, 255, .2);">
+                                    <?php echo $row[3];?>
+                                </a>
+                            </li>
+                        <?php }?>
                     </ul>
                 </div>
                 <div class="product-details-socialshare">

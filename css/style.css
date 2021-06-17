@@ -67,7 +67,12 @@ h6 {
     font-weight: normal;
     line-height: normal;
     color: #111111;
-    margin: 0
+    margin: 0;
+}
+
+@font-face {
+    font-family: "Konnect";
+    src: url("../fonts/Konnect-Hairline.woff") format('woff');
 }
 
 h1 {
@@ -4612,6 +4617,10 @@ body {
     background: #e7ab3c;
     color: #ffffff;
     border-radius: 4px;
+}
+
+i.fa.fa-star{
+    color: #e7ab3c !important;
 }
 /*everything b•••••••••elow here is just setting up the page, so dont worry about it */
 /* copyright section end */
