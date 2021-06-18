@@ -65,7 +65,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
          <!-- navigation Bar -->
          <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
             <div class="container">
-               <a class="navbar-brand" href="#"><img src="images/logo/header-logo.png"></a>
+               <a class="navbar-brand" href="index.php"><img src="images/logo/header-logo.png"></a>
                <button aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler" data-target="#navbarSupportedContent" data-toggle="collapse" type="button"><span class="navbar-toggler-icon"></span></button>
                <div class="collapse navbar-collapse" id="navbarSupportedContent">
                    <ul class="navbar-nav ml-auto">
@@ -85,9 +85,6 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
                      </button>
                      <button type="button" class="btn btn-social-icon btn-instagram btn-rounded">
                         <i class="fa fa-instagram"></i>
-                     </button>
-                     <button type="button" class="btn btn-social-icon btn-youtube btn-rounded">
-                        <i class="fa fa-youtube-play"></i>
                      </button>
                   </div>
                </div>
@@ -196,11 +193,11 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
                          <div class="product-large set-bg" data-setbg="images/slider/women-large.jpg">
                              <h2>Women’s</h2>
                              <a href="boutique.php?page=1">Découvrir plus</a>
-                         </div>
-                     </div>
+                         </div><br>
+                     </div>                                    <!-- class="shadow p-3 mb-5 bg-white rounded"-->
                      <div class="col-lg-8 offset-lg-1">
                          <div class="col-sm-12 text-center wow fadeInUp">
-                             <h2 style="font-family: 'Konnect';">LUNETTES POUR FEMME</h2>
+                             <h2 class="shadow p-3 mb-5 bg-white rounded" style="font-family: 'Konnect';">LUNETTES POUR FEMME</h2>
                          </div>
                          <?php
                          $connexion = OpenConnexion();
@@ -277,7 +274,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
              <div class="container bg-light">
                  <div class="row">
                      <div class="col-sm-12 text-center wow fadeInUp">
-                         <h2 style="font-family: 'Konnect';" >DERNIÈRES LUNETTES</h2>
+                         <h2 class="shadow p-3 mb-5 bg-white rounded" style="font-family: 'Konnect';" >DERNIÈRES LUNETTES</h2>
                      </div>
                      <div class="col-md-12 px-4 pt-0">
                          <div class="owl-carousel carousel_se_02_carousel owl-theme">
@@ -373,7 +370,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
                  <div class="row">
                      <div class="col-lg-8">
                          <div class="col-sm-12 text-center wow fadeInUp">
-                             <h2 style="font-family: 'Konnect';">LUNETTES POUR HOMMES</h2>
+                             <h2 class="shadow p-3 mb-5 bg-white rounded" style="font-family: 'Konnect';">LUNETTES POUR HOMMES</h2>
                          </div>
                          <?php
                          $connexion = OpenConnexion();
@@ -457,17 +454,19 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
                    <div class="col-lg-3">
                       <div class="footer-left">
                          <div class="footer-logo">
-                            <a href="#"><img src="images/logo/footer-logo.png" alt=""></a>
+                            <a href="index.php"><img src="images/logo/footer-logo.png" alt=""></a>
                          </div>
                           <ul>
-                              <li><i class="ti-location-pin"> 60-49 Road 11378 New York</i></li>
-                              <li><i class="ti-mobile"> +65 11.188.888</i></li>
-                              <li><i class="ti-email"> hellocolorlib@gmail.com</i></li>
+                              <ul>
+                                  <!-- <li><i class="ti-location-pin"> 60-49 Road 11378 New York</i></li>
+                                  <li><i class="ti-mobile"> +65 11.188.888</i></li>-->
+                                  <li><i class="ti-email"> bensalahnoufel@gmail.com</i></li>
+                              </ul>
                           </ul>
-                         <div class="footer-social">
-                            <a href="#"><i class="fa fa-facebook"></i></a>
-                            <a href="#"><i class="fa fa-instagram"></i></a>
-                         </div>
+                          <div class="footer-social">
+                              <a href="#"><i class="fa fa-facebook"></i></a>
+                              <a href="#"><i class="fa fa-instagram"></i></a>
+                          </div>
                       </div>
                    </div>
                     <div class="col-lg-4">

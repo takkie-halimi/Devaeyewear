@@ -144,7 +144,7 @@ if(isset($_POST['d_submit'])) {
      <!-- navigation Bar -->
      <nav class="navbar navbar-expand-lg navbar-light nav-dark">
         <div class="container">
-           <a class="navbar-brand" href="#"><img src="images/logo/header-logo.png"></a>
+           <a class="navbar-brand" href="index.php"><img src="images/logo/header-logo.png"></a>
            <button aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler" data-target="#navbarSupportedContent" data-toggle="collapse" type="button"><span class="navbar-toggler-icon"></span></button>
            <div class="collapse navbar-collapse" id="navbarSupportedContent">
               <ul class="navbar-nav ml-auto">
@@ -164,9 +164,6 @@ if(isset($_POST['d_submit'])) {
                  </button>
                  <button type="button" class="btn btn-social-icon btn-instagram btn-rounded">
                     <i class="fa fa-instagram"></i>
-                 </button>
-                 <button type="button" class="btn btn-social-icon btn-youtube btn-rounded">
-                    <i class="fa fa-youtube-play"></i>
                  </button>
               </div>
            </div>
@@ -454,19 +451,19 @@ if(isset($_POST['d_submit'])) {
                <div class="col-lg-3">
                   <div class="footer-left">
                      <div class="footer-logo">
-                        <a href="#"><img src="images/logo/footer-logo.png" alt=""></a>
+                        <a href="index.php"><img src="images/logo/footer-logo.png" alt=""></a>
                      </div>
-                     <ul>
-                         <ul>
-                             <li><i class="ti-location-pin"> 60-49 Road 11378 New York</i></li>
-                             <li><i class="ti-mobile"> +65 11.188.888</i></li>
-                             <li><i class="ti-email"> hellocolorlib@gmail.com</i></li>
-                         </ul>
-                     </ul>
-                     <div class="footer-social">
-                        <a href="#"><i class="fa fa-facebook"></i></a>
-                        <a href="#"><i class="fa fa-instagram"></i></a>
-                     </div>
+                      <ul>
+                          <ul>
+                              <!-- <li><i class="ti-location-pin"> 60-49 Road 11378 New York</i></li>
+                              <li><i class="ti-mobile"> +65 11.188.888</i></li>-->
+                              <li><i class="ti-email"> bensalahnoufel@gmail.com</i></li>
+                          </ul>
+                      </ul>
+                      <div class="footer-social">
+                          <a href="#"><i class="fa fa-facebook"></i></a>
+                          <a href="#"><i class="fa fa-instagram"></i></a>
+                      </div>
                   </div>
                </div>
                 <div class="col-lg-4">

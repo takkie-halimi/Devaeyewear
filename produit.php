@@ -67,7 +67,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
          <!-- navigation Bar -->
          <nav class="navbar navbar-expand-lg navbar-light nav-dark">
             <div class="container">
-               <a class="navbar-brand" href="#"><img src="images/logo/header-logo.png"></a>
+               <a class="navbar-brand" href="index.php"><img src="images/logo/header-logo.png"></a>
                <button aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler" data-target="#navbarSupportedContent" data-toggle="collapse" type="button"><span class="navbar-toggler-icon"></span></button>
                <div class="collapse navbar-collapse" id="navbarSupportedContent">
                    <ul class="navbar-nav ml-auto">
@@ -87,9 +87,6 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
                      </button>
                      <button type="button" class="btn btn-social-icon btn-instagram btn-rounded">
                         <i class="fa fa-instagram"></i>
-                     </button>
-                     <button type="button" class="btn btn-social-icon btn-youtube btn-rounded">
-                        <i class="fa fa-youtube-play"></i>
                      </button>
                   </div>
                </div>
@@ -244,7 +241,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
                              <div class="product-details-size">
                                  <span>Taille :</span>
                                  <ul>
-                                     <li><?php echo $ref[0].' <i class="fa fa-square-o" aria-hidden="true"></i> '.$ref[1]." - ".$ref[2]?> <img src="images/bar.png" style="height: 20px; width: 50px;"></li>
+                                     <li><?php echo $ref[0].' <i class="fa fa-square-o" aria-hidden="true"></i> '.$ref[1]." <img src='images/bar.png' style='height: 20px; width: 50px;'> ".$ref[2]?></li>
                                  </ul>
                              </div>
                              <div class="product-details-categories">
@@ -278,7 +275,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
                              <div class="product-details-socialshare">
                                  <span>Partager  :</span>
                                  <ul>
-                                     <li><a class="facebook" href="#"><i class="fa fa-facebook"></i></a></li>
+                                     <li><a class="facebook" href="https://www.facebook.com/sharer/sharer.php?app_id=1180062399123345&sdk=joey&u=/URL/&display=popup&ref=plugin&src=share_button" onclick="return !window.open(this.href, 'Facebook', 'width=640,height=580')"><i class="fa fa-facebook"></i></a></li>
                                      <li><a class="instagram" href="#"><i class="fa fa-instagram"></i></a></li>
                                  </ul>
                              </div>
@@ -319,19 +316,19 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
                    <div class="col-lg-3">
                       <div class="footer-left">
                          <div class="footer-logo">
-                            <a href="#"><img src="images/logo/footer-logo.png" alt=""></a>
+                            <a href="index.php"><img src="images/logo/footer-logo.png" alt=""></a>
                          </div>
-                         <ul>
-                             <ul>
-                                 <li><i class="ti-location-pin"> 60-49 Road 11378 New York</i></li>
-                                 <li><i class="ti-mobile"> +65 11.188.888</i></li>
-                                 <li><i class="ti-email"> hellocolorlib@gmail.com</i></li>
-                             </ul>
-                         </ul>
-                         <div class="footer-social">
-                            <a href="#"><i class="fa fa-facebook"></i></a>
-                            <a href="#"><i class="fa fa-instagram"></i></a>
-                         </div>
+                          <ul>
+                              <ul>
+                                  <!-- <li><i class="ti-location-pin"> 60-49 Road 11378 New York</i></li>
+                                  <li><i class="ti-mobile"> +65 11.188.888</i></li>-->
+                                  <li><i class="ti-email"> bensalahnoufel@gmail.com</i></li>
+                              </ul>
+                          </ul>
+                          <div class="footer-social">
+                              <a href="#"><i class="fa fa-facebook"></i></a>
+                              <a href="#"><i class="fa fa-instagram"></i></a>
+                          </div>
                       </div>
                    </div>
                     <div class="col-lg-4">
