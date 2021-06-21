@@ -353,7 +353,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
                       <div class="col-lg-12">
                          <div class="copyright-text">
                             <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-                            Copyright © <script>document.write(new Date().getFullYear());</script> <i class="fa fa-heart-o" aria-hidden="true"></i> All rights reserved
+                            Copyright © <script>document.write(new Date().getFullYear());</script> <i class="fa fa-heart-o" aria-hidden="true"></i> Tous Les Droits Sont Réservés
                             <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
                             <div class="payment-pic">
                                <img src="images/payment-method.png" alt="">

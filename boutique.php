@@ -8,10 +8,8 @@ session_start();
 $username = $_POST['username'];
 $password = $_POST['password'];
 $error = "";
-
-$limit = 12;
+/* Pagination */
 $page = isset($_GET['page']) ? $_GET['page'] : 1;
-$start = ($page - 1) * $limit;
 $Previous = $page - 1;
 $Next = $page + 1;
 
@@ -169,10 +167,10 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
                              <div class="sidebar_widget search mb--60">
                                  <h2 class="sidebar_title">Rechercher</h2>
                                  <div class="sidebar_search">
-                                     <form action="" method="POST">
+                                       <div class="form">
                                          <input id="searchBar" name="searchBar" type="text" placeholder="Rechercher:">
-                                         <button name="r_submit" type="submit"><i class="ti-search"></i></button>
-                                     </form>
+                                         <button onclick="search_value()"><i class="ti-search"></i></button>
+                                       </div>
                                  </div>
                              </div>
                              <!-- End Single Wedget -->
@@ -180,15 +178,18 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
                              <div class="sidebar_widget widget_price_filter mb--60">
                                  <h2 class="sidebar_title">Filter</h2>
                                  <div class="sidebar_filter">
-                                     <input type="text" id="demo_7" class="js-range-slider" name="my_range" value=""
+                                     <input id="demo_7" class="js-range-slider" name="my_range" value=""
                                             data-type="double"
                                             data-min="0"
                                             data-max="100"
                                             data-from="15"
-                                            data-to="95"
+                                            data-to="85"
                                             data-grid="true"
                                      />
-                                 </div>
+                                 </div><br>
+                                 <button type="button" class="btn btn-secondary btn-lg btn-block" style="height:40px !important;" onclick="range_value()">
+                                     <i class="ti-search"></i>
+                                 </button>
                              </div>
                              <!-- End Single Wedget -->
 
@@ -229,6 +230,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
                                  <ul class="sidebar_tag">
                                      <li><a>Homme</a></li>
                                      <li><a>Femme</a></li>
+                                     <li><a>Mix</a></li>
                                      <li><a>Tous</a></li>
                                  </ul>
                              </div>
@@ -244,16 +246,19 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
                                          <a class="active" href="#tab1" data-toggle="tab"> <i class="ti-layout-grid4-alt"></i></a>
                                      </div>
                                  </div>
-                                 <div class="shop-found-selector">
-                                     <p>Affichage des résultats 1–10 sur 12</p>
-                                         <select name="zoneSelect">
-                                             <option onclick="page_restrict('genre','Tous')">Trier par : Tous</option>
-                                             <option onclick="page_restrict('genre','Homme')">Trier par : Homme</option>
-                                             <option onclick="page_restrict('genre','Femme')">Trier par : Femme</option>
-                                             <option onclick="page_restrict('genre','Mix')">Trier par : (MIX) Homme & Femme</option>
-                                             <option onclick="page_restrict('prix','pbh')">Trier par prix : De Bas en Haut</option>
-                                             <option onclick="page_restrict('prix','phb')">Trier par prix : De Haut en Bas</option>
-                                         </select>
+                                 <p>Affichage des résultats 10 sur 12</p>
+                                 <div class="btn-group">
+                                      <button class="btn btn-secondary btn-sm dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style=" height:30px !important;">
+                                         <i class="fa fa-sort" aria-hidden="true"></i>
+                                     </button>
+                                     <div class="dropdown-menu dropdown-menu-right">
+                                         <button class="dropdown-item" type="button" onclick="page_restrict('genre','T')">Tous</button>
+                                         <button class="dropdown-item" type="button" onclick="page_restrict('genre','H')">Homme</button>
+                                         <button class="dropdown-item" type="button" onclick="page_restrict('genre','F')">Femme</button>
+                                         <button class="dropdown-item" type="button" onclick="page_restrict('genre','M')">(MIX) Homme & Femme</button>
+                                         <button class="dropdown-item" type="button" onclick="page_restrict('prix','B')">prix : De Bas en Haut</button>
+                                         <button class="dropdown-item" type="button" onclick="page_restrict('prix','H')">prix : De Haut en Bas</button>
+                                     </div>
                                  </div>
                              </div>
 
@@ -261,40 +266,114 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
                                  <div class="row single_grid_product tab-pane fade show active" id="tab1" role="tabpanel">
                                      <!-- Start Single Product -->
                                      <?php
-                                         if(!empty($_GET['gender'])) {
-                                             if($_GET['gender'] == 'Homme')
-                                                 $query = "SELECT p.pId,
+                                         if(!empty($_GET['genre'])) {
+                                             switch ($_GET['genre']) {
+                                                 case 'H':
+                                                 {
+                                                     $connexion = OpenConnexion();
+                                                     $MiniQuery = "SELECT COUNT(pId) AS count
+                                                               FROM product
+                                                               WHERE gender='Homme'";
+                                                     $result = mysqli_query($connexion, $MiniQuery);
+                                                     $row = mysqli_fetch_row($result);
+                                                     CloseConnexion($connexion);
+
+                                                     if ($row[0] > 12) {
+                                                         $limit = 12;
+                                                         $productsCount = $row[0];
+                                                     } else {
+                                                         $limit = $row[0];
+                                                         $productsCount = $limit;
+                                                     }
+                                                     $start = ($page - 1) * $limit;
+                                                     $pages = ceil($productsCount / $limit);
+
+                                                     $query = "SELECT p.pId,
                                                                   p.pName,
                                                                   p.pAPrice,
                                                                   p.pPPrice,
                                                                   p.gender,
                                                                   p.size,
                                                                   p.pImageName
-                                                       FROM product AS p where p.gender = 'Homme'
-                                                       LIMIT $start , $limit";
-                                             else if($_GET['gender'] == 'Femme') {
-                                                 $query = "SELECT p.pId,
+                                                               FROM product AS p where p.gender = 'Homme'
+                                                               LIMIT $start , $limit";
+                                                     break;
+                                                 }
+                                                 case 'F':
+                                                 {
+                                                     $connexion = OpenConnexion();
+                                                     $MiniQuery = "SELECT COUNT(pId) AS count
+                                                               FROM product
+                                                               WHERE gender='Femme'";
+                                                     $result = mysqli_query($connexion, $MiniQuery);
+                                                     $row = mysqli_fetch_row($result);
+                                                     CloseConnexion($connexion);
+
+                                                     if ($row[0] > 12) {
+                                                         $limit = 12;
+                                                         $productsCount = $row[0];
+                                                     } else {
+                                                         $limit = $row[0];
+                                                         $productsCount = $limit;
+                                                     }
+                                                     $start = ($page - 1) * $limit;
+                                                     $pages = ceil($productsCount / $limit);
+
+                                                     $query = "SELECT p.pId,
                                                                   p.pName,
                                                                   p.pAPrice,
                                                                   p.pPPrice,
                                                                   p.gender,
                                                                   p.size,
                                                                   p.pImageName
-                                                   FROM product AS p where p.gender = 'Femme'
-                                                   LIMIT $start , $limit";
-                                             }
-                                             else if($_GET['gender'] == 'Mix') {
-                                                 $query = "SELECT p.pId,
+                                                               FROM product AS p where p.gender = 'Femme'
+                                                               LIMIT $start , $limit";
+                                                     break;
+                                                 }
+                                                 case 'M':
+                                                 {
+                                                     $connexion = OpenConnexion();
+                                                     $MiniQuery = "SELECT COUNT(pId) AS count
+                                                                   FROM product
+                                                                   WHERE gender='Mix'";
+                                                     $result = mysqli_query($connexion, $MiniQuery);
+                                                     $row = mysqli_fetch_row($result);
+                                                     CloseConnexion($connexion);
+
+                                                     if ($row[0] > 12) {
+                                                         $limit = 12;
+                                                         $productsCount = $row[0];
+                                                     } else {
+                                                         $limit = $row[0];
+                                                         $productsCount = $limit;
+                                                     }
+                                                     $start = ($page - 1) * $limit;
+                                                     $pages = ceil($productsCount / $limit);
+
+                                                     $query = "SELECT p.pId,
                                                                   p.pName,
                                                                   p.pAPrice,
                                                                   p.pPPrice,
                                                                   p.gender,
                                                                   p.size,
                                                                   p.pImageName
-                                                           FROM product AS p where p.gender = 'Mix'
-                                                           LIMIT $start , $limit";
-                                             }else {
-                                                 $query = "SELECT p.pId,
+                                                               FROM product AS p where p.gender = 'Mix'
+                                                               LIMIT $start , $limit";
+                                                     break;
+                                                 }
+                                                 case'T':
+                                                 {
+                                                     $limit = 12;
+                                                     $start = ($page - 1) * $limit;
+
+                                                     $connexion = OpenConnexion();
+                                                     $MiniQuery = "SELECT COUNT(pId) AS count FROM product";
+                                                     $result = mysqli_query($connexion, $MiniQuery);
+                                                     $row = mysqli_fetch_row($result);
+                                                     $pages = ceil($row[0] / $limit);
+                                                     CloseConnexion($connexion);
+
+                                                     $query = "SELECT p.pId,
                                                                   p.pName,
                                                                   p.pAPrice,
                                                                   p.pPPrice,
@@ -303,10 +382,22 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
                                                                   p.pImageName
                                                            FROM product AS p 
                                                            LIMIT $start , $limit";
-                                             }
-                                         }
+                                                     break;
+                                                 }
+                                             }}
                                          else if (!empty($_GET['prix'])){
-                                             if($_GET['prix'] == 'pbh')
+
+                                             $limit = 12;
+                                             $start = ($page - 1) * $limit;
+
+                                             $connexion = OpenConnexion();
+                                             $MiniQuery = "SELECT COUNT(pId) AS count FROM product";
+                                             $result = mysqli_query($connexion, $MiniQuery);
+                                             $row = mysqli_fetch_row($result);
+                                             $pages = ceil($row[0] / $limit);
+                                             CloseConnexion($connexion);
+
+                                             if($_GET['prix'] == 'B')
                                                  $query = " SELECT p.pId,
                                                                    p.pName,
                                                                    p.pAPrice,
@@ -329,7 +420,81 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
                                                            ORDER BY p.pAPrice DESC
                                                            LIMIT $start , $limit";
                                          }
+                                         else if (!empty($_GET['rechercher'])){
+
+                                             $searchTerm = $_GET['rechercher'];
+                                             $connexion = OpenConnexion();
+                                             $MiniQuery = "SELECT COUNT(pId) AS count FROM product
+                                                           WHERE pName LIKE '%".$searchTerm."%'";
+                                             $result = mysqli_query($connexion, $MiniQuery);
+                                             $row = mysqli_fetch_row($result);
+                                             CloseConnexion($connexion);
+
+                                             if ($row[0] > 12) {
+                                                 $limit = 12;
+                                                 $productsCount = $row[0];
+                                             } else {
+                                                 $limit = $row[0];
+                                                 $productsCount = $limit;
+                                             }
+                                             $start = ($page - 1) * $limit;
+                                             $pages = ceil($productsCount / $limit);
+
+                                             $query = "SELECT p.pId,
+                                                              p.pName,
+                                                              p.pAPrice,
+                                                              p.pPPrice,
+                                                              p.gender,
+                                                              p.size,
+                                                              p.pImageName
+                                                       FROM product AS p 
+                                                       WHERE p.pName LIKE '%".$searchTerm."%' LIMIT $start , $limit";
+                                         }
+                                         else if (!empty($_GET['gamme'])){
+
+                                             $gamme = $_GET['gamme'];
+                                             $from_to = explode(',',$gamme);
+                                             $connexion = OpenConnexion();
+                                             $MiniQuery = "SELECT COUNT(pId) AS count
+                                                           FROM product
+                                                           WHERE pAPrice BETWEEN $from_to[0] AND $from_to[1]";
+                                             $result = mysqli_query($connexion, $MiniQuery);
+                                             $row = mysqli_fetch_row($result);
+                                             CloseConnexion($connexion);
+
+                                             if ($row[0] > 12) {
+                                                 $limit = 12;
+                                                 $productsCount = $row[0];
+                                             } else {
+                                                 $limit = $row[0];
+                                                 $productsCount = $limit;
+                                             }
+                                             $start = ($page - 1) * $limit;
+                                             $pages = ceil($productsCount / $limit);
+
+                                             $query = "SELECT p.pId,
+                                                              p.pName,
+                                                              p.pAPrice,
+                                                              p.pPPrice,
+                                                              p.gender,
+                                                              p.size,
+                                                              p.pImageName
+                                                       FROM product AS p
+                                                       WHERE p.pAPrice BETWEEN '$from_to[0]' AND '$from_to[1]'                                                       
+                                                       LIMIT $start, $limit";
+                                         }
                                          else{
+
+                                             $limit = 12;
+                                             $start = ($page - 1) * $limit;
+
+                                             $connexion = OpenConnexion();
+                                             $MiniQuery = "SELECT COUNT(pId) AS count FROM product";
+                                             $result = mysqli_query($connexion, $MiniQuery);
+                                             $row = mysqli_fetch_row($result);
+                                             $pages = ceil($row[0] / $limit);
+                                             CloseConnexion($connexion);
+
                                              $query = "SELECT p.pId,
                                                               p.pName,
                                                               p.pAPrice,
@@ -340,20 +505,6 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
                                                        FROM product AS p 
                                                        LIMIT $start , $limit";
                                          }
-                                         if(isset($_POST['r_submit']))
-                                         {
-                                             $searchTerm = $_POST['searchBar'];
-                                             $query = "SELECT p.pId,
-                                                              p.pName,
-                                                              p.pAPrice,
-                                                              p.pPPrice,
-                                                              p.gender,
-                                                              p.size,
-                                                              p.pImageName
-                                                       FROM product AS p 
-                                                       Where p.pName LIKE '%".$searchTerm."%' LIMIT $start , $limit";
-                                         }
-
                                          $connexion = OpenConnexion();
                                          $result = mysqli_query($connexion, $query);
                                          if ($result->num_rows > 0) {
@@ -418,19 +569,11 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
                                      </div>
                                      <?php
                                      }}
-                                     else echo "0 results";
+                                     else $error = "0 results";
                                      CloseConnexion($connexion);
                                      ?>
                                  </div>
                              </div>
-                             <?php
-                                 $connexion = OpenConnexion();
-                                 $query = "SELECT count(pId) AS id FROM product";
-                                 $result = mysqli_query($connexion, $query);
-                                 $productsCount = mysqli_fetch_row($result);
-                                 $pages = ceil($productsCount[0] / $limit);
-                                 CloseConnexion($connexion);
-                             ?>
                              <ul class="pagination_style">
                                  <?php
                                      $href = basename($_SERVER['REQUEST_URI']);
@@ -512,7 +655,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
                       <div class="col-lg-12">
                          <div class="copyright-text">
                             <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-                            Copyright © <script>document.write(new Date().getFullYear());</script> <i class="fa fa-heart-o" aria-hidden="true"></i> All rights reserved
+                            Copyright © <script>document.write(new Date().getFullYear());</script> <i class="fa fa-heart-o" aria-hidden="true"></i> Tous Les Droits Sont Réservés
                             <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
                             <div class="payment-pic">
                                <img src="images/payment-method.png" alt="">
@@ -545,8 +688,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
          </div>
 
         <script>
-            function page_restrict(name, value)
-            {
+            function page_restrict(name, value) {
                 var href = window.location.href;
                 if(href.indexOf("?") > -1)
                     window.location.href = href + "&" + name + "=" + value;
@@ -554,6 +696,40 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
                     var  base_href = href.split("&");
                 window.location.href = base_href[0] + "&" + name + "=" + value;
             }
+        </script>
+        <script>
+               function search_value() {
+                   var href = window.location.href;
+                   var searchValue = document.getElementById("searchBar").value;
+                   if(searchValue != ''){
+                       if(href.indexOf("?") > -1)
+                           window.location.href = href + "&" + 'rechercher' + "=" + searchValue;
+                       if(href.indexOf("&") > -1)
+                           var  base_href = href.split("&");
+                       window.location.href = base_href[0] + "&" + 'rechercher' + "=" + searchValue;
+                   }
+               }
+        </script>
+        <script>
+            function range_value() {
+                var href = window.location.href;
+                var slider = $(".js-range-slider").data("ionRangeSlider");
+                var from = slider.result.from;
+                var to = slider.result.to;
+
+                if(href.indexOf("?") > -1)
+                    window.location.href = href + "&" + 'gamme' + "=" + from + "," + to;
+                if(href.indexOf("&") > -1)
+                    var  base_href = href.split("&");
+                window.location.href = base_href[0] + "&" + 'gamme' + "=" + from + "," + to;
+            }
+        </script>
+        <script>
+            $(function() {
+                $( '#searchBar' ).autocomplete({
+                    source: 'search-assist.php',
+                });
+            });
         </script>
 
          <!-- Scripts section
@@ -577,16 +753,9 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
                  min: 0,
                  max: 100,
                  from: 15,
-                 to: 95,
-                 prefix: "$"
+                 to: 85,
+                 prefix: "€"
              });
          </script>
-        <script>
-            $(function() {
-                $( '#searchBar' ).autocomplete({
-                    source: 'search-assist.php',
-                });
-            });
-        </script>
    </body>
 </html>

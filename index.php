@@ -274,7 +274,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
              <div class="container bg-light">
                  <div class="row">
                      <div class="col-sm-12 text-center wow fadeInUp">
-                         <h2 class="shadow p-3 mb-5 bg-white rounded" style="font-family: 'Konnect';" >DERNIÈRES LUNETTES</h2>
+                         <h2 class="shadow-lg p-3 mb-5 bg-white rounded" style="font-family: 'Konnect';" >DERNIÈRES LUNETTES</h2>
                      </div>
                      <div class="col-md-12 px-4 pt-0">
                          <div class="owl-carousel carousel_se_02_carousel owl-theme">
@@ -490,7 +490,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
                    <div class="row">
                       <div class="col-lg-12">
                          <div class="copyright-text">
-                            Copyright © <script>document.write(new Date().getFullYear());</script> <i class="fa fa-heart-o" aria-hidden="true"></i> All rights reserved
+                            Copyright © <script>document.write(new Date().getFullYear());</script> <i class="fa fa-heart-o" aria-hidden="true"></i> Tous Les Droits Sont Réservés
                             <div class="payment-pic">
                                <img src="images/payment-method.png" alt="">
                             </div>
