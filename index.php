@@ -96,7 +96,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
                               <div class="modal-content animate" action="" method="post">
                                   <div class="imgcontainer">
                                       <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
-                                      <img src="images/avatar.jpg" alt="Avatar" class="avatar">
+                                      <img src="images/icons/avatar.jpg" alt="Avatar" class="avatar">
                                   </div>
                                   <div class="my-account-area login-margin">
                                       <div class="container">
@@ -142,7 +142,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
             </ol>
             <div class="carousel-inner">
                <div class="carousel-item active">
-                  <img alt="First slide" class="d-block w-100" src="images/carousel-slider/b5.jpg">
+                  <img alt="First slide" class="d-block w-100" src="images/banner/b5.jpg">
                   <div class="carousel-caption">
                      <h5 class="animated zoomIn" style="animation-delay: 1s">Commencez<br>Vos Chats Préférés</h5>
                      <p class="animated bounceInLeft" style="animation-delay: 1s">
@@ -153,7 +153,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
                   </div>
                </div>
                <div class="carousel-item">
-                  <img alt="Second slide" class="d-block w-100" src="images/carousel-slider/b2.png">
+                  <img alt="Second slide" class="d-block w-100" src="images/banner/b2.png">
                   <div class="carousel-caption">
                      <h5 class="animated slideInUp" style="animation-delay: 1s">Commencez<br>Vos Chats Préférés</h5>
                      <p class="animated fadeInLeft" style="animation-delay: 1s">
@@ -164,7 +164,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
                   </div>
                </div>
                <div class="carousel-item">
-                  <img alt="Third slide" class="d-block w-100" src="images/carousel-slider/b4.jpg">
+                  <img alt="Third slide" class="d-block w-100" src="images/banner/b1.png">
                   <div class="carousel-caption">
                      <h5 class="animated slideInRight" style="animation-delay: 1s">Commencez<br>Vos Chats Préférés</h5>
                      <p class="animated zoomIn" style="animation-delay: 1s">
@@ -190,7 +190,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
              <div class="container-fluid">
                  <div class="row">
                      <div class="col-lg-3">
-                         <div class="product-large set-bg" data-setbg="images/slider/women-large.jpg">
+                         <div class="product-large set-bg" data-setbg="images/banner/women-large.jpg">
                              <h2>Women’s</h2>
                              <a href="boutique.php?page=1">Découvrir plus</a>
                          </div><br>
@@ -230,13 +230,13 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
                                                      </h4>
                                                      <ul class="cart_action">
                                                          <li>
-                                                             <a href="cart.html">
-                                                                 <img src="images/add_to_cart.png" alt="icons">
+                                                             <a href="boutique.php?page=1">
+                                                                 <img src="images/icons/add_to_cart.png" alt="icons">
                                                              </a>
                                                          </li>
                                                          <li>
                                                              <a id="<?php echo $id;?>" class="quickview">
-                                                                 <img id="loop" src="images/quick_view.png" alt="icons">
+                                                                 <img id="loop" src="images/icons/quick_view.png" alt="icons">
                                                              </a>
                                                          </li>
                                                      </ul>
@@ -326,13 +326,13 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
                                                      </h4>
                                                      <ul class="cart_action">
                                                          <li>
-                                                             <a href="cart.html">
-                                                                 <img src="images/add_to_cart.png" alt="icons">
+                                                             <a href="boutique.php?page=1">
+                                                                 <img src="images/icons/add_to_cart.png" alt="icons">
                                                              </a>
                                                          </li>
                                                          <li>
                                                              <a id="<?php echo $id;?>" class="quickview">
-                                                                 <img id="loop" src="images/quick_view.png" alt="icons">
+                                                                 <img id="loop" src="images/icons/quick_view.png" alt="icons">
                                                              </a>
                                                          </li>
                                                      </ul>
@@ -403,13 +403,13 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
                                              </h4>
                                              <ul class="cart_action">
                                                  <li>
-                                                     <a href="cart.html">
-                                                         <img src="images/add_to_cart.png" alt="icons">
+                                                     <a href="boutique.php?page=1">
+                                                         <img src="images/icons/add_to_cart.png" alt="icons">
                                                      </a>
                                                  </li>
                                                  <li>
                                                      <a id="<?php echo $id;?>" class="quickview">
-                                                         <img id="loop" src="images/quick_view.png" alt="icons">
+                                                         <img id="loop" src="images/icons/quick_view.png" alt="icons">
                                                      </a>
                                                  </li>
                                              </ul>
@@ -437,7 +437,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
                          </div>
                      </div>
                      <div class="col-lg-3 offset-lg-1">
-                         <div class="product-large set-bg m-large" data-setbg="images/slider/man-large.jpg">
+                         <div class="product-large set-bg m-large" data-setbg="images/banner/man-large.jpg">
                              <h2>Men’s</h2>
                              <a href="boutique.php?page=1">Découvrir plus</a>
                          </div>
@@ -470,9 +470,9 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
                       </div>
                    </div>
                     <div class="col-lg-4">
-                        <img src="images/instagram.jpg">
+                        <img src="images/icons/instagram.jpg">
                     </div>
-                   <div class="col-lg-5">
+                   <div class="col-lg-5">images/avatar.jpg
                       <div class="newslatter-item">
                          <h5>Rejoignez notre newsletter maintenant</h5>
                          <p>Recevez des mises à jour par e-mail sur notre dernière boutique et nos offres spéciales.</p>
@@ -492,7 +492,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
                          <div class="copyright-text">
                             Copyright © <script>document.write(new Date().getFullYear());</script> <i class="fa fa-heart-o" aria-hidden="true"></i> Tous Les Droits Sont Réservés
                             <div class="payment-pic">
-                               <img src="images/payment-method.png" alt="">
+                               <img src="images/icons/payment-method.png" alt="">
                             </div>
                          </div>
                       </div>

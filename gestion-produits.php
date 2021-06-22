@@ -190,11 +190,11 @@ if(isset($_POST['d_submit'])) {
              <div class="row">
                  <div class="col-lg-12">
                      <div class="bradcaump_inner text-center">
-                         <h2 class="bradcaump-title">Shop</h2>
+                         <h2 class="bradcaump-title">Gestion Des Produits</h2>
                          <nav class="bradcaump-content">
-                             <a class="breadcrumb_item" href="index.html">Home</a>
+                             <a class="breadcrumb_item" href="index.php">Accueil</a>
                              <span class="brd-separetor">/</span>
-                             <span class="breadcrumb_item active">Shop</span>
+                             <span class="breadcrumb_item active">Gestion Des Produits</span>
                          </nav>
                      </div>
                  </div>
@@ -467,13 +467,13 @@ if(isset($_POST['d_submit'])) {
                   </div>
                </div>
                 <div class="col-lg-4">
-                    <img src="images/instagram.jpg">
+                    <img src="images/icons/instagram.jpg">
                 </div>
                 <div class="col-lg-5">
                     <div class="newslatter-item">
                         <h5>Rejoignez notre newsletter maintenant</h5>
                         <p>Recevez des mises à jour par e-mail sur notre dernière boutique et nos offres spéciales.</p>
-                        <form action="#" class="subscribe-form">
+                        <form action="" class="subscribe-form">
                             <input type="text" placeholder="Entrez votre e-mail ">
                             <button type="button">S'abonner</button>
                         </form>
@@ -491,7 +491,7 @@ if(isset($_POST['d_submit'])) {
                         Copyright © <script>document.write(new Date().getFullYear());</script> <i class="fa fa-heart-o" aria-hidden="true"></i> Tous Les Droits Sont Réservés
                         <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
                         <div class="payment-pic">
-                           <img src="images/payment-method.png" alt="">
+                           <img src="images/icons/payment-method.png" alt="">
                         </div>
                      </div>
                   </div>
@@ -550,8 +550,6 @@ if(isset($_POST['d_submit'])) {
      <script src="js/main.js"></script>
 
      <script src="js/bootstrap.min.js"></script>
-     <script src="js/ion.rangeSlider.min.js"></script>
-     <script src="js/product-slider.js"></script>
      <script src="js/manipul.js"></script>
 
 </body>

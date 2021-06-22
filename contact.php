@@ -108,7 +108,7 @@ if (isset($_POST['mail_submit'])) {
                               <div class="modal-content animate" action="" method="post">
                                   <div class="imgcontainer">
                                       <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
-                                      <img src="images/avatar.jpg" alt="Avatar" class="avatar">
+                                      <img src="images/icons/avatar.jpg" alt="Avatar" class="avatar">
                                   </div>
                                   <div class="my-account-area login-margin">
                                       <div class="container">
@@ -148,16 +148,16 @@ if (isset($_POST['mail_submit'])) {
 
          <div class="body_overlay"></div>
          <!-- Start Bradcaump area -->
-         <div class="bradcaump_area bg_image--4">
+         <div class="bradcaump_area bg_image--3">
              <div class="container">
                  <div class="row">
                      <div class="col-lg-12">
-                         <div class="bradcaump_inner text-center">
-                             <h2 class="bradcaump-title">Shop</h2>
+                         <div class="bradcaump_inner text-left">
+                             <h2 style="color: #000000;" class="bradcaump-title">Contact</h2>
                              <nav class="bradcaump-content">
-                                 <a class="breadcrumb_item" href="index.html">Home</a>
-                                 <span class="brd-separetor">/</span>
-                                 <span class="breadcrumb_item active">Shop</span>
+                                 <a style="color: #000000;" class="breadcrumb_item" href="index.php">Accueil</a>
+                                 <span style="color: #000000;" class="brd-separetor">/</span>
+                                 <span style="color: #000000;" class="breadcrumb_item active">Contact</span>
                              </nav>
                          </div>
                      </div>
@@ -239,8 +239,6 @@ if (isset($_POST['mail_submit'])) {
              </div>
          </section>
 
-
-
           <!-- footer section start -->
           <div class="footer_section layout_padding">
              <div class="container">
@@ -264,13 +262,13 @@ if (isset($_POST['mail_submit'])) {
                       </div>
                    </div>
                     <div class="col-lg-4">
-                        <img src="images/instagram.jpg">
+                        <img src="images/icons/instagram.jpg">
                     </div>
                     <div class="col-lg-5">
                         <div class="newslatter-item">
                             <h5>Rejoignez notre newsletter maintenant</h5>
                             <p>Recevez des mises à jour par e-mail sur notre dernière boutique.</p>
-                            <form action="#" class="subscribe-form">
+                            <form action="" class="subscribe-form">
                                 <input type="text" placeholder="Entrez votre e-mail ">
                                 <button type="button">S'abonner</button>
                             </form>
@@ -288,7 +286,7 @@ if (isset($_POST['mail_submit'])) {
                             Copyright © <script>document.write(new Date().getFullYear());</script> <i class="fa fa-heart-o" aria-hidden="true"></i> Tous Les Droits Sont Réservés
                             <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
                             <div class="payment-pic">
-                               <img src="images/payment-method.png" alt="">
+                               <img src="images/icons/payment-method.png" alt="">
                             </div>
                          </div>
                       </div>
@@ -296,7 +294,6 @@ if (isset($_POST['mail_submit'])) {
                 </div>
              </div>
           </div>
-
 
 
          <!-- Scripts section
@@ -307,12 +304,7 @@ if (isset($_POST['mail_submit'])) {
          <script src="js/popper.min.js"></script>
          <script src="js/plugins.js"></script>
          <script src="js/main.js"></script>
-
          <script src="js/bootstrap.min.js"></script>
-         <script src="js/ion.rangeSlider.min.js"></script>
-         <script src="js/product-slider.js"></script>
-
          <!-- ------------------------------------------- -->
-         <!-- Nav bar backround -->
    </body>
 </html>

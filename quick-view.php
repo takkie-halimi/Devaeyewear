@@ -113,7 +113,7 @@ require_once('php/connexion.php');
                 <div class="product-details-size">
                     <span>Taille :</span>
                     <ul>
-                        <li><?php echo $ref[0].' <i class="fa fa-square-o" aria-hidden="true"></i> '.$ref[1]." <img src='images/bar.png' style='height: 20px; width: 50px;'> ".$ref[2]?></li>
+                        <li><?php echo $ref[0].' <i class="fa fa-square-o" aria-hidden="true"></i> '.$ref[1]." <img src='images/icons/bar.png' style='height: 20px; width: 50px;'> ".$ref[2]?></li>
                     </ul>
                 </div>
                 <div class="product-details-categories">

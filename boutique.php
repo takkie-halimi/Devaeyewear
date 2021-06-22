@@ -63,7 +63,8 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
 
         <div id="preloder">
             <div class="loader"></div>
-         </div>
+        </div>
+
          <!-- Quickview Window -->
          <div class="hamburger-box button mobile-toggle"></div>
          <!-- End Quickview Window -->
@@ -102,7 +103,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
                               <div class="modal-content animate" action="" method="post">
                                   <div class="imgcontainer">
                                       <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
-                                      <img src="images/avatar.jpg" alt="Avatar" class="avatar">
+                                      <img src="images/icons/avatar.jpg" alt="Avatar" class="avatar">
                                   </div>
                                   <div class="my-account-area login-margin">
                                       <div class="container">
@@ -142,22 +143,24 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
 
          <div class="body_overlay"></div>
          <!-- Start Bradcaump area -->
-         <div class="bradcaump_area bg_image--4">
+         <div class="bradcaumps_area bg_image--1">
              <div class="container">
                  <div class="row">
                      <div class="col-lg-12">
                          <div class="bradcaump_inner text-center">
-                             <h2 class="bradcaump-title">Shop</h2>
+                             <h2 style="color: #000000;" class="bradcaump-title">Boutique</h2>
                              <nav class="bradcaump-content">
-                                 <a class="breadcrumb_item" href="index.html">Home</a>
-                                 <span class="brd-separetor">/</span>
-                                 <span class="breadcrumb_item active">Shop</span>
+                                 <a style="color: #000000;" class="breadcrumb_item" href="index.php">Accueil</a>
+                                 <span style="color: #000000;" class="brd-separetor">/</span>
+                                 <span style="color: #000000;" class="breadcrumb_item active">Boutique</span>
                              </nav>
                          </div>
                      </div>
                  </div>
              </div>
          </div>
+
+        <!-- Start Shop area -->
          <div class="shop_area section-ptb-xl bg--white">
              <div class="container">
                  <div class="row">
@@ -219,7 +222,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
                              <!-- Start Single Wedget -->
                              <div class="sidebar_widget widget_banner mb--60">
                                  <div class="sidebar_banner">
-                                     <a><img src="images/carousel-slider/sidebar-banner.jpg" alt="sidebar banner"></a>
+                                     <a><img src="images/banner/sidebar-banner.jpg" alt="sidebar banner"></a>
                                  </div>
                              </div>
                              <!-- End Single Wedget -->
@@ -524,13 +527,13 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
                                                          </h4>
                                                          <ul class="cart_action">
                                                              <li>
-                                                                 <a href="cart.html">
-                                                                     <img src="images/add_to_cart.png" alt="icons">
+                                                                 <a href="contact.php">
+                                                                     <img src="images/icons/add_to_cart.png" alt="icons">
                                                                  </a>
                                                              </li>
                                                              <li>
                                                                  <a id="<?php echo $id;?>" class="quickview">
-                                                                     <img id="loop" src="images/quick_view.png" alt="icons">
+                                                                     <img id="loop" src="images/icons/quick_view.png" alt="icons">
                                                                  </a>
                                                              </li>
                                                          </ul>
@@ -549,7 +552,6 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
                                                      <?php }?>
                                                  </div>
                                              </div>
-
                                              <!-- <div class="pi-text">
                                                  <a href="#">
                                                      <h5><?php echo $row[1];?></h5>
@@ -634,13 +636,13 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
                       </div>
                    </div>
                     <div class="col-lg-4">
-                        <img src="images/instagram.jpg">
+                        <img src="images/icons/instagram.jpg">
                     </div>
                     <div class="col-lg-5">
                         <div class="newslatter-item">
                             <h5>Rejoignez notre newsletter maintenant</h5>
                             <p>Recevez des mises à jour par e-mail sur notre dernière boutique et nos offres spéciales.</p>
-                            <form action="#" class="subscribe-form">
+                            <form action="" class="subscribe-form">
                                 <input type="text" placeholder="Entrez votre e-mail ">
                                 <button type="button">S'abonner</button>
                             </form>
@@ -658,7 +660,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
                             Copyright © <script>document.write(new Date().getFullYear());</script> <i class="fa fa-heart-o" aria-hidden="true"></i> Tous Les Droits Sont Réservés
                             <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
                             <div class="payment-pic">
-                               <img src="images/payment-method.png" alt="">
+                               <img src="images/icons/payment-method.png" alt="">
                             </div>
                          </div>
                       </div>
@@ -666,20 +668,6 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
                 </div>
              </div>
           </div>
-        <script>
-            $('.quickview').mouseover( function(){
-                $.ajax({
-                    method: "GET",
-                    url: "quick-view.php?id="+this.id,
-                    success: function(result){
-                        $('#view').html(result);
-                    }
-                });
-            });
-            $('.quickview').click( function() {
-                $('.quick-view-modal').toggleClass('is-visible');
-            });
-        </script>
          <!-- Quick View Modal -->
          <div class="quick-view-modal">
              <div id='view' class="quick-view-modal-inner">
@@ -688,50 +676,12 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
          </div>
 
         <script>
-            function page_restrict(name, value) {
-                var href = window.location.href;
-                if(href.indexOf("?") > -1)
-                    window.location.href = href + "&" + name + "=" + value;
-                if(href.indexOf("&") > -1)
-                    var  base_href = href.split("&");
-                window.location.href = base_href[0] + "&" + name + "=" + value;
-            }
-        </script>
-        <script>
-               function search_value() {
-                   var href = window.location.href;
-                   var searchValue = document.getElementById("searchBar").value;
-                   if(searchValue != ''){
-                       if(href.indexOf("?") > -1)
-                           window.location.href = href + "&" + 'rechercher' + "=" + searchValue;
-                       if(href.indexOf("&") > -1)
-                           var  base_href = href.split("&");
-                       window.location.href = base_href[0] + "&" + 'rechercher' + "=" + searchValue;
-                   }
-               }
-        </script>
-        <script>
-            function range_value() {
-                var href = window.location.href;
-                var slider = $(".js-range-slider").data("ionRangeSlider");
-                var from = slider.result.from;
-                var to = slider.result.to;
-
-                if(href.indexOf("?") > -1)
-                    window.location.href = href + "&" + 'gamme' + "=" + from + "," + to;
-                if(href.indexOf("&") > -1)
-                    var  base_href = href.split("&");
-                window.location.href = base_href[0] + "&" + 'gamme' + "=" + from + "," + to;
-            }
-        </script>
-        <script>
             $(function() {
                 $( '#searchBar' ).autocomplete({
                     source: 'search-assist.php',
                 });
             });
         </script>
-
          <!-- Scripts section
          ------------------------------------------- //-->
          <!-- Scripts for Product Quickview -->
@@ -743,19 +693,20 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
 
          <script src="js/bootstrap.min.js"></script>
          <script src="js/ion.rangeSlider.min.js"></script>
-         <script src="js/product-slider.js"></script>
          <script src="js/jquery-ui.js"></script>
+         <script src="js/manipul.js"></script>
+
+         <script>
+            $(".js-range-slider").ionRangeSlider({
+                grid: true,
+                min: 0,
+                max: 100,
+                from: 15,
+                to: 85,
+                prefix: "€"
+            });
+         </script>
 
         <!-- ------------------------------------------- -->
-         <script>
-             $(".js-range-slider").ionRangeSlider({
-                 grid: true,
-                 min: 0,
-                 max: 100,
-                 from: 15,
-                 to: 85,
-                 prefix: "€"
-             });
-         </script>
    </body>
 </html>

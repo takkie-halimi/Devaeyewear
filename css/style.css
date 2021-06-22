@@ -1,19 +1,16 @@
-/*  Copyright (C) 2021 Halimi Takkie Eddine  <takkie8halimi@gmail.com>
-*
-* This program is free software; you can redistribute it and/or modify
-* it under the terms of the GNU General Public License as published by
-* the Free Software Foundation; either version 3 of the License, or
-* (at your option) any later version.
-*
-* This program is distributed in the hope that it will be useful,
-* but WITHOUT ANY WARRANTY; without even the implied warranty of
-* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-* GNU General Public License for more details.
-*
-* You should have received a copy of the GNU General Public License
-* along with this program. If not, see <http://www.gnu.org/licenses/>.
-*/
-/*--------------------------------------------------------------------- import Files ---------------------------------------------------------------------*/
+
+/*********************************************************************************
+
+	Template Name: DEVA-EYE-WEAR - DEVA-EYE-WEAR Bootstrap 4 Template
+	Version: 1.0
+	Developer: TAKKIE EDDINE HALIMI © Copyright, ALL Rights Are Reserved.
+	Email: takkie8halimi@gmail.com.
+	Corporation: HALIMI INDUSTRIES. 
+
+**********************************************************************************/
+/*--------------------------------------------------------------------- 
+                            import Files 
+---------------------------------------------------------------------*/
 @import url(animate.min.css);
 @import url(themify-icons.css);
 @import url(icofont.min.css);
@@ -3160,7 +3157,8 @@ ol {
     Banner of Pages
 --------------------------------*/
 .bradcaump_area {
-    padding: 140px 150px; }
+    padding: 140px 150px;
+}
 .bradcaump_area .bradcaump_inner .bradcaump-title {
     color: #fff;
     font-size: 40px;
@@ -3172,6 +3170,11 @@ ol {
     .bradcaump_area .bradcaump_inner .bradcaump-title {
         font-size: 26px;
         margin: 0 0 12px; } }
+@media only screen and (max-width: 479px) {
+    .bradcaumps_area .bradcaump_inner .bradcaump-title {
+        font-size: 26px;
+        margin: 0 0 12px; } }
+
 .bradcaump_area .bradcaump_inner .bradcaump-content .breadcrumb_item {
     color: #ffffff; }
 .bradcaump_area .bradcaump_inner .bradcaump-content .breadcrumb_item:hover {
@@ -3185,12 +3188,62 @@ ol {
     .bradcaump_area {
         padding: 65px 0 65px; } }
 
+/* ---------------------------------------*/
+.bradcaumps_area {
+    padding: 180px 165px;
+}
+.bradcaumps_area .bradcaump_inner .bradcaump-title {
+    color: #fff;
+    font-size: 40px;
+    font-weight: bold;
+    line-height: 1;
+    margin: 0 0 16px;
+    text-transform: capitalize; }
+@media only screen and (max-width: 479px) {
+    .bradcaumps_area .bradcaump_inner .bradcaump-title {
+        font-size: 26px;
+        margin: 0 0 12px; } }
+@media only screen and (max-width: 479px) {
+    .bradcaumps_area .bradcaump_inner .bradcaump-title {
+        font-size: 26px;
+        margin: 0 0 12px; } }
+
+.bradcaumps_area .bradcaump_inner .bradcaump-content .breadcrumb_item {
+    color: #ffffff; }
+.bradcaumps_area .bradcaump_inner .bradcaump-content .breadcrumb_item:hover {
+    color: #777; }
+.bradcaumps_area .bradcaump_inner .bradcaump-content .breadcrumb_item.active {
+    color: #ffffff; }
+.bradcaumps_area .bradcaump_inner .bradcaump-content .brd-separetor {
+    padding: 0 5px;
+    color: #ffffff; }
+@media only screen and (max-width: 767px) {
+    .bradcaumps_area {
+        padding: 65px 0 65px; } }
+
 .bg_image--4 {
-    background-image: url(../images/carousel-slider/bannershop.jpg);
+    background-image: url(../images/banner/magnage.jpg);
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center center; }
 
+.bg_image--3 {
+    background-image: url(../images/banner/contact.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center; }
+
+.bg_image--2 {
+    background-image: url(../images/banner/view.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center; }
+
+.bg_image--1 {
+    background-image: url(../images/banner/boutique.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center; }
 
 /*------------------------------
     Scroll Up

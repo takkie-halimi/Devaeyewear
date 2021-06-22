@@ -1,13 +1,12 @@
 /*********************************************************************************
 
-	Template Name: chasmishco - chasmish eCommerce Bootstrap4 Template
-	Description: A perfect template to build beautiful and unique chasmish websites. It comes with nice and clean design.
-	Version: 1.0
+ Template Name: DEVA-EYE-WEAR - DEVA-EYE-WEAR Bootstrap 4 Template
+ Version: 1.0
+ Developer: TAKKIE EDDINE HALIMI © Copyright, ALL Rights Are Reserved.
+ Email: takkie8halimi@gmail.com.
+ Corporation: HALIMI INDUSTRIES.
 
-	Note: This is main js.
-
-
-**********************************************************************************/
+ **********************************************************************************/
 
 /**************************************************************
 	
