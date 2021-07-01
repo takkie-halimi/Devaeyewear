@@ -43,7 +43,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
       <meta name="viewport" content="initial-scale=1, maximum-scale=1">
 
       <!-- site metas -->
-      <title>Diva - Accueil</title>
+      <title>Deva - Accueil</title>
       <link rel="icon" href="images/logo/logo.ico"/>
       <!-- bootstrap css -->
       <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
